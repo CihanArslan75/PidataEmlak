@@ -17,7 +17,7 @@
 
             <div class="col-md-5">
                 <input id="reaname" name="reaname" type="text" placeholder="İşletme Adı Giriniz" class="form-control input-md" required="">
-              
+                <p style="color:red;">Zorunlu Alan</p>
             </div>
         </div>
 
@@ -27,6 +27,7 @@
 
             <div class="col-md-5">
                 <input id="ownernamesurname" name="ownernamesurname" type="text" placeholder="" class="form-control input-md"  required="">
+                 <p style="color:red;">Zorunlu Alan</p>
             </div>
         </div>
           <!-- Text input-->

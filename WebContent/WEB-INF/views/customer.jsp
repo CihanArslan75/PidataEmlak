@@ -27,7 +27,7 @@
             <label class="col-md-4 control-label" for="reaname">Müşteri Adı : </label>
             <div class="col-md-5">
                 <input id="name" name="name" type="text" placeholder="İşletme Adı Giriniz" class="form-control input-md"  required="">
-                <span>Zorunlu Alan</span>
+                <p style="color:red;font-size=10px">Zorunlu Alan</p>
             </div>
         </div>
         
@@ -36,7 +36,7 @@
             <label class="col-md-4 control-label" for="reaname">Müşteri Soyadı : </label>
             <div class="col-md-5">
                 <input id="surname" name="surname" type="text" placeholder="İşletme Adı Giriniz" class="form-control input-md"  required="">
-                <span>Zorunlu Alan</span>
+                <p style="color:red;">Zorunlu Alan</p>
             </div>
         </div>
 
