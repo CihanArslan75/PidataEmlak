@@ -31,14 +31,23 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/index")
-	@ResponseBody
-	public ModelAndView getOwnerName() {
-		ModelAndView mav= new ModelAndView();
-		mav.addObject("owner","Cihan Arslan");
-		mav.setViewName("index"); // sayfanını adı
-		return mav;
+	public String getOwnerName() {
+		return "index";
 	}
-
+	
+	@RequestMapping("/rea")
+	public String getRea() {
+		return "realEstateAgent";
+	}
+	@RequestMapping("/estate")
+	public String getEstate() {
+		return "estate";
+	}
+	
+	@RequestMapping("/customer")
+	public String getCustomer() {
+		return "customer";
+	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(Locale locale, Model model, HttpSession session, @RequestParam String username, @RequestParam String password) throws Exception {
@@ -54,7 +63,7 @@ public class HomeController {
 			user.setInsertDate(new Date());
 			user.setState(StateEnum.YENIGIRIS);
 			dao.save(user);
-			return "redirect:/login/";
+			return "index";
 		}
 		
 		if(session.getAttribute("user") != null){
@@ -63,7 +72,7 @@ public class HomeController {
 		session.setAttribute("user", user);
 		
 		
-		return "redirect:/login/";
+		return "index";
 		
 	}
 
