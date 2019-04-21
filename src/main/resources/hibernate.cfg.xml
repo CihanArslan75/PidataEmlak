@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/estatedb</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>   
+        
+        <mapping class="com.cihan.estate.models.Estate"/>
+        <mapping class="com.cihan.estate.models.RealEstateAgent"/>
+        <mapping class="com.cihan.estate.models.Customer"/> 
+        <mapping class="com.cihan.estate.models.Provinces"/>
+        <mapping class="com.cihan.estate.models.Districts"/>
+        <mapping class="com.cihan.estate.models.user.User"/>
+    </session-factory>
+</hibernate-configuration>
