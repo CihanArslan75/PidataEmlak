@@ -9,7 +9,8 @@
     <fieldset>
         <!-- Form Name -->
         <h1 align="center">İşletme Bilgileri Giriş Formu </h1>
-
+        </br>
+          <p style="color:red;" align="center" >${displayArea}</p>
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="reaname">İşletme Adı : </label>

@@ -20,20 +20,20 @@ public class Estate extends BaseEntity{
 	private int id ;
 	private RealEstateAgent realEstateAgent ;
 	private Customer customer ;
-	private EstateType estateType;  // (KONUT 0 , ISYERI 1)  ENUM
-	private EstateState estateState; //(SATILIK 0 , KIRALIK 1) ENUM
+	private int estateType;  // (KONUT 0 , ISYERI 1)  
+	private int estateState; //(SATILIK 0 , KIRALIK 1) 
 	private int size ;    //(metrekate)
 	private String roomNumber  ;
 	private String floor ;
-	private WarmingType  warmingType ; //(MERKEZI 0,DOGALGAZ 1, KAT KALORIFERI 2) ENUM
-	private DeedType deedType ; //(KAT MULKIYETI 0,KAT IRTIFAKI 1,TAPUSUZ 2)  ENUM 
-	private State elevator  ; // (VAR , YOK) ENUM
+	private int  warmingType ; //(MERKEZI 0,DOGALGAZ 1, KAT KALORIFERI 2) 
+	private int deedType ; //(KAT MULKIYETI 0,KAT IRTIFAKI 1,TAPUSUZ 2)   
+	private State elevator  ; // (VAR , YOK) 
 	private String address  ;
 	private Provinces province;
 	private Districts district ;
 	private String  coordinateX  ;
 	private String coordinateY;
-	private BuildingType  buildingType;  // (BETONARME 0,KARKAS 1, AHŞAP 2 ),  ENUM
+	private int  buildingType;  // (BETONARME 0,KARKAS 1, AHŞAP 2 ),  
 	private String  buildingAge ;
 	
 	
@@ -63,18 +63,17 @@ public class Estate extends BaseEntity{
 		this.customer = customer;
 	}
 	@Column(name = "estatetype")
-    @Enumerated
-	public EstateType getEstateType() {
+	public int getEstateType() {
 		return estateType;
 	}
-	public void setEstateType(EstateType estateType) {
+	public void setEstateType(int estateType) {
 		this.estateType = estateType;
 	}
 	@Column(name = "estatestate")
-	public EstateState getEstateState() {
+	public int getEstateState() {
 		return estateState;
 	}
-	public void setEstateState(EstateState estateState) {
+	public void setEstateState(int estateState) {
 		this.estateState = estateState;
 	}
 	@Column(name = "size")
@@ -99,19 +98,17 @@ public class Estate extends BaseEntity{
 		this.floor = floor;
 	}
 	@Column(name = "warmingtype")
-    @Enumerated
-	public WarmingType getWarmingType() {
+	public int getWarmingType() {
 		return warmingType;
 	}
-	public void setWarmingType(WarmingType warmingType) {
+	public void setWarmingType(int warmingType) {
 		this.warmingType = warmingType;
 	}
 	@Column(name = "deedtype")
-    @Enumerated
-	public DeedType getDeedType() {
+	public int getDeedType() {
 		return deedType;
 	}
-	public void setDeedType(DeedType deedType) {
+	public void setDeedType(int deedType) {
 		this.deedType = deedType;
 	}
 	@Column(name = "elevator")
@@ -159,11 +156,10 @@ public class Estate extends BaseEntity{
 		this.coordinateY = coordinateY;
 	}
 	@Column(name = "buildingtype")
-    @Enumerated
-	public BuildingType getBuildingType() {
+	public int getBuildingType() {
 		return buildingType;
 	}
-	public void setBuildingType(BuildingType buildingType) {
+	public void setBuildingType(int buildingType) {
 		this.buildingType = buildingType;
 	}
 	@Column(length = 50, name = "buildingage")

@@ -15,10 +15,10 @@ public class Customer extends BaseEntity{
 	private int id;
 	private String name ;
 	private String surname;
-	private CustomerType customerType;
-	private String telephone ;
+	private int customerType;
 	private String mobilephone ;
 	private String email;
+	
 		
 	@Id
 	@SequenceGenerator(name = "seq_customer", allocationSize = 1, sequenceName = "seq_customer")
@@ -44,20 +44,13 @@ public class Customer extends BaseEntity{
 		this.surname = surname;
 	}
 	@Column(name = "customertype")
-    @Enumerated
-	public CustomerType getCustomerType() {
+	public int getCustomerType() {
 		return customerType;
 	}
-	public void setCustomerType(CustomerType customerType) {
+	public void setCustomerType(int customerType) {
 		this.customerType = customerType;
 	}
-	@Column(length = 20, name = "telephone")
-	public String getTelephone() {
-		return telephone;
-	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
+	
 	@Column(length = 20, name = "mobilephone")
 	public String getMobilephone() {
 		return mobilephone;

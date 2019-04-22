@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cihan.estate.dao.CustomerDAO;
 import com.cihan.estate.dao.RealEstateAgentDAO;
 import com.cihan.estate.dao.UserDAO;
+import com.cihan.estate.models.Customer;
 import com.cihan.estate.models.RealEstateAgent;
 import com.cihan.estate.models.StateEnum;
 import com.cihan.estate.models.user.User;
@@ -26,12 +28,16 @@ import com.cihan.estate.utils.HashCodeCihan;
 @Controller
 public class HomeController {
 	
+	private String loginUser;
 	
 	@Autowired
 	UserDAO userDao;
 	
 	@Autowired
 	RealEstateAgentDAO realEstateAgentDAO;
+	
+	@Autowired
+	CustomerDAO customerDAO;
 	
 	@Autowired
 	HashCodeCihan hashCodeCihan;
@@ -83,23 +89,19 @@ public class HomeController {
 				 return "redirect:/index";
 			 }
 			 else {
+				 loginUser=user.getUsername();
+				 session.setAttribute("user", user);
 				 return "redirect:/index";
 			 }
 		
 		 }	
-		
-		//session.setAttribute("user", user);
-		//return "index";
-		
-	}
+		}
 
 
-//	private String url="index.jsp";
-//	private int id=1;
-	
 	@RequestMapping(value="/estateprocess" , method = RequestMethod.POST )   
 	public String urlVer(Locale locale, Model model, HttpSession session, @RequestParam int txtId) throws Exception {
 		String page;
+		ModelAndView mav= new ModelAndView();
 		switch (txtId) {
 		case 1: page =  "realEstateAgent";break;
 		case 2: page =  "customer";break;
@@ -114,18 +116,16 @@ public class HomeController {
 						
 	}
 	
-	
-	
 	@RequestMapping(value="/realEstateAgent", method = RequestMethod.POST  )
-	public String getRea(Locale locale, Model model, HttpSession session, 
+	public ModelAndView saveRea(Locale locale, Model model, HttpSession session, 
 			@RequestParam String reaname, 
 			@RequestParam String ownernamesurname,
 			@RequestParam String mobilephone, 
 			@RequestParam String fax,
 			@RequestParam String address) throws Exception {
 		
-		System.out.println("23333");
 		RealEstateAgent rea = new RealEstateAgent();
+		ModelAndView mav= new ModelAndView();
 		
 		rea.setAgentName(reaname);
 		rea.setOwnerNameSurname(ownernamesurname);
@@ -135,27 +135,54 @@ public class HomeController {
 		rea.setInsertDate(new Date());
 		rea.setState(StateEnum.YENIGIRIS);
 		realEstateAgentDAO.save(rea);
-		return "realEstateAgent";
+		mav.addObject("displayArea","Kayıt İşlemi Gerçekleşti ");
+		return mav;
 	}
 	
-	
-//	public int getId() {
-//		return id;
-//	}
-//
-//
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-//
-//
-//	public String getUrl() {
-//		return url;
-//	}
-//
-//
-//	public void setUrl(String url) {
-//		this.url = url;
-//	}
-//	
+
+	@RequestMapping(value="/customer", method = RequestMethod.POST  )
+	public ModelAndView saveCutomer(Locale locale, Model model, HttpSession session, 
+			@RequestParam String customertype,
+			@RequestParam String name, 
+			@RequestParam String surname,
+			@RequestParam String mobilephone, 
+			@RequestParam String email) throws Exception {
+		
+		Customer customer = new Customer();
+		ModelAndView mav= new ModelAndView();
+		
+		customer.setCustomerType(Integer.valueOf(customertype));
+		customer.setName(name);
+		customer.setSurname(surname);
+		customer.setMobilephone(mobilephone);
+		customer.setEmail(email);
+		customer.setInsertDate(new Date());
+		customer.setState(StateEnum.YENIGIRIS);
+		customerDAO.save(customer);
+		mav.addObject("displayArea","Kayıt İşlemi Gerçekleşti ");
+		return mav;
+	}
+
+	@RequestMapping(value="/estate", method = RequestMethod.POST  )
+	public ModelAndView saveEstate(Locale locale, Model model, HttpSession session, 
+			@RequestParam String customertype,
+			@RequestParam String name, 
+			@RequestParam String surname,
+			@RequestParam String mobilephone, 
+			@RequestParam String email) throws Exception {
+		
+		Customer customer = new Customer();
+		ModelAndView mav= new ModelAndView();
+		
+		customer.setCustomerType(Integer.valueOf(customertype));
+		customer.setName(name);
+		customer.setSurname(surname);
+		customer.setMobilephone(mobilephone);
+		customer.setEmail(email);
+		customer.setInsertDate(new Date());
+		customer.setState(StateEnum.YENIGIRIS);
+		customerDAO.save(customer);
+		mav.addObject("displayArea","Kayıt İşlemi Gerçekleşti ");
+		return mav;
+	}
 }

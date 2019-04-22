@@ -37,8 +37,8 @@
 	<label class="control-label col-md-4">Emlak Tipi :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="estatetype" name="estatetype">
-		<option itemLabel="Bir Kayıt Seçmelisiniz..." />
-		<option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
+		<option value="0">KONUT</option>
+  		<option value="1">İŞYERİ</option>
 	</select>
 	</div>
 </div>
@@ -47,8 +47,8 @@
 	<label class="control-label col-md-4">Emlağın Durumu :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="estatestate" name="estatestate">
-		<option itemLabel="Bir Kayıt Seçmelisiniz..." />
-		<option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
+		<option value="0">SATILIK</option>
+  		<option value="1">KİRALIK</option>
 	</select>
 	</div>
 </div>
@@ -85,8 +85,9 @@
 	<label class="control-label col-md-4">Yapı Tipi :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="buildingtype" name="buildingtype">
-		<option itemLabel="Bir Kayıt Seçmelisiniz..." />
-		<option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
+		<option value="0">BETONARME</option>
+  		<option value="1">KARKAS</option>
+  		<option value="2">AHŞAP</option>
 	</select>
 	</div>
 </div>
@@ -94,18 +95,21 @@
 	<label class="control-label col-md-4">Isınma Tipi :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="warmingtype" name="warmingtype">
-		<option itemLabel="Bir Kayıt Seçmelisiniz..." />
-		<option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
+		<option value="0">MERKEZİ</option>
+  		<option value="1">DOGALGAZ</option>
+  		<option value="2">KAT KALORİFERİ</option>
 	</select>
 	</div>
 </div>
+
 
 <div class="form-group">
 	<label class="control-label col-md-4">Tapunun Türü :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="deedtype" name="deedtype">
-		<option itemLabel="Bir Kayıt Seçmelisiniz..." />
-		<option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
+		<option value="0">KAT MÜLKİYETİ</option>
+  		<option value="1">KAT İRTIFAKI</option>
+  		<option value="2">TAPUSUZ</option>
 	</select>
 	</div>
 </div>
