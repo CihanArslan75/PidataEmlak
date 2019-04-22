@@ -20,13 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cihan.estate.dao.CustomerDAO;
 import com.cihan.estate.dao.EstateDAO;
-import com.cihan.estate.dao.ProvinceDAO;
 import com.cihan.estate.dao.RealEstateAgentDAO;
 import com.cihan.estate.dao.UserDAO;
 import com.cihan.estate.models.Customer;
-import com.cihan.estate.models.Districts;
 import com.cihan.estate.models.Estate;
-import com.cihan.estate.models.Provinces;
 import com.cihan.estate.models.RealEstateAgent;
 import com.cihan.estate.models.StateEnum;
 import com.cihan.estate.models.user.User;
@@ -48,9 +45,6 @@ public class HomeController {
 	
 	@Autowired
 	EstateDAO estateDAO;
-	
-	@Autowired
-	ProvinceDAO provinceDAO;
 	
 	@Autowired
 	HashCodeCihan hashCodeCihan;
@@ -113,10 +107,8 @@ public class HomeController {
 			page =  "estate";
 			List<Customer> listC=customerDAO.search(new Customer());
 			List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
-			List<Provinces> listP=provinceDAO.search(new Provinces());
 			model.addAttribute("listC",listC);
 			model.addAttribute("listRea",listRea);
-			model.addAttribute("listP",listP);
 			break;
 		case 4: page =  "estateList";break;
 		case 5: page =  "estateExcel";break;
@@ -186,9 +178,7 @@ public class HomeController {
 			@RequestParam String buildingtype,
 			@RequestParam String warmingtype,
 			@RequestParam String deedtype,
-			@RequestParam String address,
-			@RequestParam Provinces province,
-			@RequestParam Districts district
+			@RequestParam String address
 			) throws Exception {
 		
 		Estate estate = new Estate();
@@ -204,8 +194,6 @@ public class HomeController {
 		estate.setWarmingType(Integer.valueOf(warmingtype));
 		estate.setDeedType(Integer.valueOf(deedtype));
 		estate.setAddress(address);
-		estate.setProvince(province);
-		estate.setDistrict(district);
 		estate.setInsertDate(new Date());
 		estate.setState(StateEnum.YENIGIRIS);
 		estateDAO.save(estate);

@@ -6,7 +6,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <jsp:include page="/index"></jsp:include>
-<form class="form-horizontal">
+<form class="form-horizontal"  action="estate" method="post">
 <fieldset>
 
 <!-- Form Name -->
@@ -123,31 +123,9 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="address">Adres :</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="address" name="textarea-4">.</textarea>
+    <textarea class="form-control" id="address" name="address"></textarea>
   </div>
 </div>
-<div class="form-group">
-	<label class="control-label col-md-4">İl :</label>
-	<div class="col-md-4 ">				
-	   <select name="customerid"  class="select2_single form-control"  >
-		<option value="">Seçiniz</option>
-			<c:forEach items="${listP}" var="pro">
-				<option value="${pro.id}">${pro.provinceName}</option>
-			</c:forEach>
-  		</select>
-	</div>
-</div>
-<div class="form-group">
-	<label class="control-label col-md-4">İlçe :</label>
-	<div class="col-md-4 ">				
-	<select class="select2_single form-control" id="ls" value="district" name="district">
-		<option itemLabel="Bir Kayıt Seçmelisiniz..." />
-		<option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
-	</select>
-	</div>
-</div>
-
-
 
 <!-- Button (Double) -->
 <div class="form-group">

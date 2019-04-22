@@ -29,8 +29,6 @@ public class Estate extends BaseEntity{
 	private int deedType ; //(KAT MULKIYETI 0,KAT IRTIFAKI 1,TAPUSUZ 2)   
 	private State elevator  ; // (VAR , YOK) 
 	private String address  ;
-	private Provinces province;
-	private Districts district ;
 	private String  coordinateX  ;
 	private String coordinateY;
 	private int  buildingType;  // (BETONARME 0,KARKAS 1, AHŞAP 2 ),  
@@ -125,22 +123,7 @@ public class Estate extends BaseEntity{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	@ManyToOne  // birden çok emlak bir ile bağlanabilir.
-	@JoinColumn(name = "provinceid", referencedColumnName = "id")
-	public Provinces getProvince() {
-		return province;
-	}
-	public void setProvince(Provinces province) {
-		this.province = province;
-	}
-	@ManyToOne // birden çok emlak bir ilçeye bağlanabilir.
-	@JoinColumn(name = "districtid", referencedColumnName = "id")
-	public Districts getDistrict() {
-		return district;
-	}
-	public void setDistrict(Districts district) {
-		this.district = district;
-	}
+	
 	@Column(length = 20, name = "coordinatex")
 	public String getCoordinateX() {
 		return coordinateX;
