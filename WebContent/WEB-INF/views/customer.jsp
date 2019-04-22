@@ -4,12 +4,12 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<jsp:include page="/index"></jsp:include>
 <form class="form-horizontal">
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Müşteri Bilgileri Giriş Formu </legend>
+        <h1 align="center">Müşteri Bilgileri Giriş Formu </h1>
 
 		<!-- Select Basic -->
 		<div class="form-group">

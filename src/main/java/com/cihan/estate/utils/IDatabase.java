@@ -12,7 +12,7 @@ public interface IDatabase<T> {
     public T findId(int id,T t)  throws Exception;
     public List<T> findAllId(String columnName,int id,T t) throws Exception ;
     public List<T> search(String columnName, String search ,T t)  throws Exception;
-    public T searchLoginUser( String username,  String password,T t) throws Exception ;
+    public T searchUsr(String columnName, String search, T t) throws Exception;
     public List<T> searchAll(String columnName, String search ,T t)  throws Exception;
     public List<T> searchIdAll(T t) throws Exception;
     public List<T> search(T t)  throws Exception;

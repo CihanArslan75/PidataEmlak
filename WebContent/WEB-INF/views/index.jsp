@@ -32,16 +32,18 @@
 
 </head>
 
-<body class="nav-md">
- <form id="frmdefault">
-  
-
- <div class="container body">
+<body class="nav-md ">
+ <form id="frmdefault" method="post" action="estateprocess">
+  <div class="hide">
+	   <button id="btnurl" name="btnurl"  type="submit" value="URL ver" /> 
+	   <input id="txtId" name="txtId" />
+  </div>
+  <div class="container body ">
       <div class="main_container">
          <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-shopping-cart"></i> <span>Emlak Paneli</span></a>
+              <a href="index.jsp" class="site_title"><i class="fa fa-shopping-cart"></i> <span>Emlak Paneli</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -65,15 +67,15 @@
               <div class="menu_section">
              
                 <ul class="nav side-menu">
-                  <li><a href="#"><i class="fa fa-desktop"></i> İşyeri Yeni Kayıt </a></li>
-                  <li><a href="#"><i class="fa fa-table"></i> Müşteri Yeni Kayıt </a></li>
-                  <li><a href="#"><i class="fa fa-bar-chart-o"></i> Emlak Girişi </a></li>
-                  <li><a href="#"><i class="fa fa-clone"></i> Emlak Listeleme  </a></li>
+                  <li><a href="#" onclick="url(1)"><i class="fa fa-desktop"></i> İşyeri Yeni Kayıt </a></li>
+                  <li><a href="#" onclick="url(2)"><i class="fa fa-table"></i> Müşteri Yeni Kayıt </a></li>
+                  <li><a href="#" onclick="url(3)"><i class="fa fa-bar-chart-o"></i> Emlak Girişi </a></li>
+                  <li><a href="#" onclick="url(4)"><i class="fa fa-clone"></i> Emlak Listeleme  </a></li>
                   <li><a><i class="fa fa-desktop"></i> Özel İşlemler <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#" onclick="url(7)">Excel e Aktar</a></li>
-                      <li><a href="#" onclick="url(8)">Ürünleri XML e Aktar</a></li>
-                      <li><a href="#" onclick="url(9)">PDF Olarak Rapor  Çıkart</a></li>
+                      <li><a href="#" onclick="url(4)">Excel e Aktar</a></li>
+                      <li><a href="#" onclick="url(5)">Ürünleri XML e Aktar</a></li>
+                      <li><a href="#" onclick="url(6)">PDF Olarak Rapor  Çıkart</a></li>
                      </ul>
                   </li>
                 </ul>
@@ -93,7 +95,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.jsp">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -124,7 +126,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="login.jsp"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -235,9 +237,11 @@
     <script type="text/javascript" src="resources/vendors/jquery.hotkeys/jquery.hotkeys.js?ln=js"></script>
     <script type="text/javascript" src="resources/vendors/google-code-prettify/src/prettify.js?ln=js"></script>
    <script>
+   
   function url(id){
-	  document.getElementById("frmdefault:txturl").value=id;
-	  document.getElementById("frmdefault:btnurl").click();
+	  console.log("id:"+id);
+      document.getElementById('txtId').value=id;
+	  document.getElementById('btnurl').click();
   }
   
   </script>

@@ -103,7 +103,6 @@ import com.cihan.estate.models.StateEnum;
 	            Criteria cr = ss.createCriteria(t.getClass());
 	            cr.add(Restrictions.eq("state",StateEnum.YENIGIRIS));
 	            cr.add(Restrictions.ilike(columnName, search));
-	            
 	            List<T> list = cr.list();
 	            closeSession();
 	            return list;
@@ -112,12 +111,11 @@ import com.cihan.estate.models.StateEnum;
 	    }
 	    
 	    @Override
-	    public T searchLoginUser( String username,  String password,T t) throws Exception  {
+	    public T searchUsr(String columnName, String search, T t) throws Exception  {
 	            openSession();
 	            Criteria cr = ss.createCriteria(t.getClass());
 	            cr.add(Restrictions.eq("state",StateEnum.YENIGIRIS));
-	            cr.add(Restrictions.eq("username", username));
-	            cr.add(Restrictions.eq("password", password));
+	            cr.add(Restrictions.ilike(columnName, search));
 	            T list = (T) cr.uniqueResult();
 	            closeSession();
 	            return list;
@@ -125,6 +123,7 @@ import com.cihan.estate.models.StateEnum;
 	        
 	    }
 	    
+	     
 	    @Override
 	    public List<T> searchAll(String columnName, String search, T t) throws Exception  {
 	       
