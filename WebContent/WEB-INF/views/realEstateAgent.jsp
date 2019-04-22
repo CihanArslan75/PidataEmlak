@@ -5,7 +5,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <jsp:include page="/index"></jsp:include>
-<form class="form-horizontal">
+<form class="form-horizontal" action="realEstateAgent" method="post">
     <fieldset>
         <!-- Form Name -->
         <h1 align="center">İşletme Bilgileri Giriş Formu </h1>
@@ -34,7 +34,7 @@
             <label class="col-md-4 control-label" for="mobilePhone">Cep Telefonu : </label>
 
             <div class="col-md-5">
-                <input id="mobilePhone" name="mobilePhone" type="text" placeholder="" class="form-control input-md"    >
+                <input id="mobilephone" name="mobilephone" type="text" placeholder="" class="form-control input-md"    >
             </div>
         </div>
           <!-- Text input-->
@@ -51,7 +51,7 @@
             <label class="col-md-4 control-label" for="address">Adres : </label>
 
             <div class="col-md-4">
-                <textarea class="form-control" id="address" name="description"></textarea>
+                <textarea class="form-control" id="address" name="address"></textarea>
             </div>
         </div>
         <!-- Button (Double) -->

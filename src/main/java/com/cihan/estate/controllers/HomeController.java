@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cihan.estate.dao.RealEstateAgentDAO;
 import com.cihan.estate.dao.UserDAO;
+import com.cihan.estate.models.RealEstateAgent;
 import com.cihan.estate.models.StateEnum;
 import com.cihan.estate.models.user.User;
 import com.cihan.estate.utils.HashCodeCihan;
@@ -26,7 +28,11 @@ public class HomeController {
 	
 	
 	@Autowired
-	UserDAO dao;
+	UserDAO userDao;
+	
+	@Autowired
+	RealEstateAgentDAO realEstateAgentDAO;
+	
 	@Autowired
 	HashCodeCihan hashCodeCihan;
 	
@@ -56,7 +62,7 @@ public class HomeController {
 	@GetMapping("/password-reset-request")
 	public String loginPost(Locale locale, Model model, HttpSession session, @RequestParam String username, @RequestParam String password) throws Exception {
 		System.out.println("1");
-		User user = dao.searchUsr("username",username,new User());
+		User user = userDao.searchUsr("username",username,new User());
 			
 		if(user == null){
 			model.addAttribute("error", "kullanıcı adı veya şifre hatalı!");
@@ -66,7 +72,7 @@ public class HomeController {
 			user.setPassword(hashCodeCihan.encodeWord(password));
 			user.setInsertDate(new Date());
 			user.setState(StateEnum.YENIGIRIS);
-			dao.save(user);
+			userDao.save(user);
 			return "redirect:/index";
 		}
 		 else
@@ -110,17 +116,25 @@ public class HomeController {
 	
 	
 	
-	@RequestMapping("/realEstateAgent")
+	@RequestMapping(value="/realEstateAgent", method = RequestMethod.POST  )
 	public String getRea(Locale locale, Model model, HttpSession session, 
 			@RequestParam String reaname, 
 			@RequestParam String ownernamesurname,
-			@RequestParam String mobilePhone, 
+			@RequestParam String mobilephone, 
 			@RequestParam String fax,
-			@RequestParam String address
-			) throws Exception {
+			@RequestParam String address) throws Exception {
 		
+		System.out.println("23333");
+		RealEstateAgent rea = new RealEstateAgent();
 		
-		
+		rea.setAgentName(reaname);
+		rea.setOwnerNameSurname(ownernamesurname);
+		rea.setMobilePhone(mobilephone);
+		rea.setFax(fax);
+		rea.setAddress(address);
+		rea.setInsertDate(new Date());
+		rea.setState(StateEnum.YENIGIRIS);
+		realEstateAgentDAO.save(rea);
 		return "realEstateAgent";
 	}
 	
