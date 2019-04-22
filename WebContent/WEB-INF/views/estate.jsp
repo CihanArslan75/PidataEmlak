@@ -55,28 +55,28 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">MetreKaresi :</label>  
+  <label class="col-md-4 control-label" for="size">MetreKaresi :</label>  
   <div class="col-md-4">
   <input id="size" name="size" class="form-control input-md" type="text">
   </div>
 </div>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Oda Sayısı :</label>  
+  <label class="col-md-4 control-label" for="roomnumber">Oda Sayısı :</label>  
   <div class="col-md-4">
   <input id="roomnumber" name="roomnumber" class="form-control input-md" type="text">
   </div>
 </div>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Katı :</label>  
+  <label class="col-md-4 control-label" for="floor">Katı :</label>  
   <div class="col-md-4">
   <input id="floor" name="floor" class="form-control input-md" type="text">
   </div>
 </div>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Emlağın Yaşı :</label>  
+  <label class="col-md-4 control-label" for="buildingage">Emlağın Yaşı :</label>  
   <div class="col-md-4">
   <input id="buildingage" name="buildingage" class="form-control input-md" type="text">
   </div>

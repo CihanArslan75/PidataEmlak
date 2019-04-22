@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import org.hibernate.criterion.Distinct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cihan.estate.dao.CustomerDAO;
+import com.cihan.estate.dao.EstateDAO;
 import com.cihan.estate.dao.RealEstateAgentDAO;
 import com.cihan.estate.dao.UserDAO;
 import com.cihan.estate.models.Customer;
+import com.cihan.estate.models.Districts;
+import com.cihan.estate.models.Estate;
+import com.cihan.estate.models.Provinces;
 import com.cihan.estate.models.RealEstateAgent;
 import com.cihan.estate.models.StateEnum;
 import com.cihan.estate.models.user.User;
@@ -38,6 +43,9 @@ public class HomeController {
 	
 	@Autowired
 	CustomerDAO customerDAO;
+	
+	@Autowired
+	EstateDAO estateDAO;
 	
 	@Autowired
 	HashCodeCihan hashCodeCihan;
@@ -165,23 +173,38 @@ public class HomeController {
 
 	@RequestMapping(value="/estate", method = RequestMethod.POST  )
 	public ModelAndView saveEstate(Locale locale, Model model, HttpSession session, 
-			@RequestParam String customertype,
-			@RequestParam String name, 
-			@RequestParam String surname,
-			@RequestParam String mobilephone, 
-			@RequestParam String email) throws Exception {
+			@RequestParam String estatetype,
+			@RequestParam String estatestate, 
+			@RequestParam String roomnumber,
+			@RequestParam String size, 
+			@RequestParam String floor,
+			@RequestParam String buildingage,
+			@RequestParam String buildingtype,
+			@RequestParam String warmingtype,
+			@RequestParam String deedtype,
+			@RequestParam String address,
+			@RequestParam Provinces province,
+			@RequestParam Districts district
+			) throws Exception {
 		
-		Customer customer = new Customer();
+		Estate estate = new Estate();
 		ModelAndView mav= new ModelAndView();
 		
-		customer.setCustomerType(Integer.valueOf(customertype));
-		customer.setName(name);
-		customer.setSurname(surname);
-		customer.setMobilephone(mobilephone);
-		customer.setEmail(email);
-		customer.setInsertDate(new Date());
-		customer.setState(StateEnum.YENIGIRIS);
-		customerDAO.save(customer);
+		estate.setEstateType(Integer.valueOf(estatetype));
+		estate.setEstateState(Integer.valueOf(estatestate));
+		estate.setRoomNumber(roomnumber);
+		estate.setSize(Integer.valueOf(size));
+		estate.setFloor(floor);
+		estate.setBuildingAge(buildingage);
+		estate.setBuildingType(Integer.valueOf(buildingtype));
+		estate.setWarmingType(Integer.valueOf(warmingtype));
+		estate.setDeedType(Integer.valueOf(deedtype));
+		estate.setAddress(address);
+		estate.setProvince(province);
+		estate.setDistrict(district);
+		estate.setInsertDate(new Date());
+		estate.setState(StateEnum.YENIGIRIS);
+		estateDAO.save(estate);
 		mav.addObject("displayArea","Kayıt İşlemi Gerçekleşti ");
 		return mav;
 	}
