@@ -169,8 +169,8 @@ public class HomeController {
 
 	@RequestMapping(value="/estate", method = RequestMethod.POST  )
 	public ModelAndView saveEstate(Locale locale, Model model, HttpSession session, 
-			@RequestParam RealEstateAgent agentid,
-			@RequestParam Customer customerid,
+			@RequestParam String agentid,
+			@RequestParam String customerid,
 			@RequestParam String estatetype,
 			@RequestParam String estatestate, 
 			@RequestParam String roomnumber,
@@ -185,18 +185,21 @@ public class HomeController {
 		
 		Estate estate = new Estate();
 		ModelAndView mav= new ModelAndView();
-		
-		estate.setRealEstateAgent(agentid);
-		estate.setCustomer(customerid);
+	
+		RealEstateAgent reaa= realEstateAgentDAO.findId(Integer.valueOf(agentid),new RealEstateAgent());
+		Customer cuss= customerDAO.findId(Integer.valueOf(customerid), new Customer());
+			
+		estate.setRealEstateAgent(reaa);
+		estate.setCustomer(cuss);
 		estate.setEstateType(Integer.valueOf(estatetype));
-		estate.setEstateState(Integer.valueOf(estatestate));
+		if(estatestate!=null) estate.setEstateState(Integer.valueOf(estatestate));
 		estate.setRoomNumber(roomnumber);
-		estate.setSize(Integer.valueOf(size));
+		if(size!=null)  estate.setSize(Integer.valueOf(size));
 		estate.setFloor(floor);
 		estate.setBuildingAge(buildingage);
-		estate.setBuildingType(Integer.valueOf(buildingtype));
-		estate.setWarmingType(Integer.valueOf(warmingtype));
-		estate.setDeedType(Integer.valueOf(deedtype));
+		if(buildingtype!=null)  estate.setBuildingType(Integer.valueOf(buildingtype));
+		if(warmingtype!=null) estate.setWarmingType(Integer.valueOf(warmingtype));
+		if(deedtype!=null) estate.setDeedType(Integer.valueOf(deedtype));
 		estate.setAddress(address);
 		estate.setInsertDate(new Date());
 		estate.setState(StateEnum.YENIGIRIS);
