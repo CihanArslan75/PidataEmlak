@@ -1,6 +1,7 @@
 package com.cihan.estate.controllers;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cihan.estate.dao.CustomerDAO;
 import com.cihan.estate.dao.EstateDAO;
+import com.cihan.estate.dao.ProvinceDAO;
 import com.cihan.estate.dao.RealEstateAgentDAO;
 import com.cihan.estate.dao.UserDAO;
 import com.cihan.estate.models.Customer;
@@ -48,6 +50,9 @@ public class HomeController {
 	EstateDAO estateDAO;
 	
 	@Autowired
+	ProvinceDAO provinceDAO;
+	
+	@Autowired
 	HashCodeCihan hashCodeCihan;
 	
 	@RequestMapping("/msg")
@@ -61,16 +66,8 @@ public class HomeController {
 		return "index";
 	}
 	
-	
-	@RequestMapping("/estate")
-	public String getEstate() {
-		return "estate";
-	}
-	
-	@RequestMapping("/customer")
-	public String getCustomer() {
-		return "customer";
-	}
+
+
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@GetMapping("/password-reset-request")
@@ -109,11 +106,18 @@ public class HomeController {
 	@RequestMapping(value="/estateprocess" , method = RequestMethod.POST )   
 	public String urlVer(Locale locale, Model model, HttpSession session, @RequestParam int txtId) throws Exception {
 		String page;
-		ModelAndView mav= new ModelAndView();
 		switch (txtId) {
 		case 1: page =  "realEstateAgent";break;
 		case 2: page =  "customer";break;
-		case 3: page =  "estate";break;
+		case 3: 
+			page =  "estate";
+			List<Customer> listC=customerDAO.search(new Customer());
+			List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
+			List<Provinces> listP=provinceDAO.search(new Provinces());
+			model.addAttribute("listC",listC);
+			model.addAttribute("listRea",listRea);
+			model.addAttribute("listP",listP);
+			break;
 		case 4: page =  "estateList";break;
 		case 5: page =  "estateExcel";break;
 		case 6: page =  "estateXML";break;

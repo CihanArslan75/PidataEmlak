@@ -16,10 +16,13 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="estateid">Yetkili İşletme Adı :</label>
   <div class="col-md-4">
-    <select id="estateid" name="estateid" class="form-control">
-      <option itemLabel="Bir Kayıt Seçmelisiniz..." />
-	  <option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
-    </select>
+   <select name="estateid" id="estateid"  class="select2_single form-control"   >
+		<option value="">Seçiniz</option>
+			<c:forEach items="${listRea}" var="rea">
+				<option value="${rea.id}">${rea.agentName}</option>
+			</c:forEach>
+  </select>
+    			
   </div>
 </div>
 
@@ -27,10 +30,12 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="customerid">Müşteri Adı Soyadı :</label>
   <div class="col-md-4">
-    <select id="customerid" name="customerid" class="form-control">
-      <option itemLabel="Bir Kayıt Seçmelisiniz..." />
-	  <option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
-    </select>
+   <select name="customerid"  class="select2_single form-control"  >
+		<option value="">Seçiniz</option>
+			<c:forEach items="${listC}" var="cus">
+				<option value="${cus.id}">${cus.name}</option>
+			</c:forEach>
+  </select>
   </div>
 </div>
 <div class="form-group">
@@ -124,10 +129,12 @@
 <div class="form-group">
 	<label class="control-label col-md-4">İl :</label>
 	<div class="col-md-4 ">				
-	<select class="select2_single form-control" id="ls" value="province" name="province">
-		<option itemLabel="Bir Kayıt Seçmelisiniz..." />
-		<option value="listeC" var="liste" itemLabel="${liste.ad}" itemValue="${liste.id}"/>
-	</select>
+	   <select name="customerid"  class="select2_single form-control"  >
+		<option value="">Seçiniz</option>
+			<c:forEach items="${listP}" var="pro">
+				<option value="${pro.id}">${pro.provinceName}</option>
+			</c:forEach>
+  		</select>
 	</div>
 </div>
 <div class="form-group">

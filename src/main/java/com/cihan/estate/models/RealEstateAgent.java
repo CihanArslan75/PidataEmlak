@@ -1,5 +1,7 @@
 package com.cihan.estate.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.cihan.estate.dao.RealEstateAgentDAO;
 
 @Entity
 @Table(name = "realestateagent")
@@ -67,5 +71,5 @@ public class RealEstateAgent  extends BaseEntity {
 	public void setFax(String fax) {
 		this.fax = fax;
 	}
-
+	
 }
