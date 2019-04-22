@@ -16,7 +16,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="estateid">Yetkili İşletme Adı :</label>
   <div class="col-md-4">
-   <select name="estateid" id="estateid"  class="select2_single form-control"   >
+   <select name="agentid" id="agentid"  class="select2_single form-control"   >
 		<option value="">Seçiniz</option>
 			<c:forEach items="${listRea}" var="rea">
 				<option value="${rea.id}">${rea.agentName}</option>

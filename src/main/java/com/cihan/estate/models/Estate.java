@@ -52,6 +52,8 @@ public class Estate extends BaseEntity{
 	public void setRealEstateAgent(RealEstateAgent realEstateAgent) {
 		this.realEstateAgent = realEstateAgent;
 	}
+	
+	
 	@ManyToOne   //emlak çok müşteri tek . Bir müşterinin birden fazla evi olabilir.bir ev bir müşteriye ait olabilir
 	@JoinColumn(name = "customerid", referencedColumnName = "id")
 	public Customer getCustomer() {

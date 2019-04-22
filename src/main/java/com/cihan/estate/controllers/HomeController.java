@@ -169,6 +169,8 @@ public class HomeController {
 
 	@RequestMapping(value="/estate", method = RequestMethod.POST  )
 	public ModelAndView saveEstate(Locale locale, Model model, HttpSession session, 
+			@RequestParam RealEstateAgent agentid,
+			@RequestParam Customer customerid,
 			@RequestParam String estatetype,
 			@RequestParam String estatestate, 
 			@RequestParam String roomnumber,
@@ -184,6 +186,8 @@ public class HomeController {
 		Estate estate = new Estate();
 		ModelAndView mav= new ModelAndView();
 		
+		estate.setRealEstateAgent(agentid);
+		estate.setCustomer(customerid);
 		estate.setEstateType(Integer.valueOf(estatetype));
 		estate.setEstateState(Integer.valueOf(estatestate));
 		estate.setRoomNumber(roomnumber);
