@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false" pageEncoding="UTF-8"%>
+<%@ page language="java" session="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -42,8 +42,8 @@
 	<label class="control-label col-md-4">Emlak Tipi :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="estatetype" name="estatetype">
-		<option value="0">KONUT</option>
-  		<option value="1">İŞYERİ</option>
+		<option value="KONUT">KONUT</option>
+  		<option value="İŞYERİ">İŞYERİ</option>
 	</select>
 	</div>
 </div>
@@ -52,8 +52,8 @@
 	<label class="control-label col-md-4">Emlağın Durumu :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="estatestate" name="estatestate">
-		<option value="0">SATILIK</option>
-  		<option value="1">KİRALIK</option>
+		<option value="SATILIK">SATILIK</option>
+  		<option value="KİRALIK">KİRALIK</option>
 	</select>
 	</div>
 </div>
@@ -90,9 +90,9 @@
 	<label class="control-label col-md-4">Yapı Tipi :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="buildingtype" name="buildingtype">
-		<option value="0">BETONARME</option>
-  		<option value="1">KARKAS</option>
-  		<option value="2">AHŞAP</option>
+		<option value="BETONARME">BETONARME</option>
+  		<option value="KARKAS">KARKAS</option>
+  		<option value="AHŞAP">AHŞAP</option>
 	</select>
 	</div>
 </div>
@@ -100,9 +100,9 @@
 	<label class="control-label col-md-4">Isınma Tipi :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="warmingtype" name="warmingtype">
-		<option value="0">MERKEZİ</option>
-  		<option value="1">DOGALGAZ</option>
-  		<option value="2">KAT KALORİFERİ</option>
+		<option value="MERKEZİ">MERKEZİ</option>
+  		<option value="DOGALGAZ">DOGALGAZ</option>
+  		<option value="KAT KALORİFERİ">KAT KALORİFERİ</option>
 	</select>
 	</div>
 </div>
@@ -112,9 +112,9 @@
 	<label class="control-label col-md-4">Tapunun Türü :</label>
 	<div class="col-md-4 ">				
 	<select class="select2_single form-control" id="ls" value="deedtype" name="deedtype">
-		<option value="0">KAT MÜLKİYETİ</option>
-  		<option value="1">KAT İRTIFAKI</option>
-  		<option value="2">TAPUSUZ</option>
+		<option value="KAT MÜLKİYETİ">KAT MÜLKİYETİ</option>
+  		<option value="KAT İRTİFAKI">KAT İRTİFAKI</option>
+  		<option value="TAPUSUZ">TAPUSUZ</option>
 	</select>
 	</div>
 </div>

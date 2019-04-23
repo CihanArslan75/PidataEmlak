@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.hibernate.criterion.Distinct;
+import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -191,15 +192,15 @@ public class HomeController {
 			
 		estate.setRealEstateAgent(reaa);
 		estate.setCustomer(cuss);
-		estate.setEstateType(Integer.valueOf(estatetype));
-		if(estatestate!=null) estate.setEstateState(Integer.valueOf(estatestate));
+		estate.setEstateType(estatetype);
+		estate.setEstateState(estatestate);
 		estate.setRoomNumber(roomnumber);
 		if(size!=null)  estate.setSize(Integer.valueOf(size));
 		estate.setFloor(floor);
 		estate.setBuildingAge(buildingage);
-		if(buildingtype!=null)  estate.setBuildingType(Integer.valueOf(buildingtype));
-		if(warmingtype!=null) estate.setWarmingType(Integer.valueOf(warmingtype));
-		if(deedtype!=null) estate.setDeedType(Integer.valueOf(deedtype));
+		estate.setBuildingType(buildingtype);
+		estate.setWarmingType(warmingtype);
+		estate.setDeedType(deedtype);
 		estate.setAddress(address);
 		estate.setInsertDate(new Date());
 		estate.setState(StateEnum.YENIGIRIS);
@@ -207,4 +208,19 @@ public class HomeController {
 		mav.addObject("displayArea","Kayıt İşlemi Gerçekleşti ");
 		return mav;
 	}
+	
+	@RequestMapping(value="/estateList", method = RequestMethod.POST  )
+	public void getEstate(Locale locale, Model model, HttpSession session ) throws Exception {
+			//@RequestParam String customertype,
+			//@RequestParam String name, 
+			//@RequestParam String surname,
+			//@RequestParam String mobilephone, 
+			//@RequestParam String email) throws Exception {
+		
+		//Customer customer = new Customer();
+		List<Estate> listEstate = estateDAO.search(new Estate());
+		model.addAttribute("listEstate",listEstate);
+		
+	} 
+	
 }

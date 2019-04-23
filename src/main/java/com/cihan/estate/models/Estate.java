@@ -20,20 +20,20 @@ public class Estate extends BaseEntity{
 	private int id ;
 	private RealEstateAgent realEstateAgent ;
 	private Customer customer ;
-	private int estateType;  // (KONUT 0 , ISYERI 1)  
-	private int estateState; //(SATILIK 0 , KIRALIK 1) 
+	private String estateType;  // (KONUT 0 , ISYERI 1)  
+	private String estateState; //(SATILIK 0 , KIRALIK 1) 
 	private int size ;    //(metrekate)
 	private String roomNumber  ;
 	private String floor ;
-	private int  warmingType ; //(MERKEZI 0,DOGALGAZ 1, KAT KALORIFERI 2) 
-	private int deedType ; //(KAT MULKIYETI 0,KAT IRTIFAKI 1,TAPUSUZ 2)   
+	private String  warmingType ; //(MERKEZI 0,DOGALGAZ 1, KAT KALORIFERI 2) 
+	private String deedType ; //(KAT MULKIYETI 0,KAT IRTIFAKI 1,TAPUSUZ 2)   
 	private State elevator  ; // (VAR , YOK) 
 	private String address  ;
 	private String  coordinateX  ;
 	private String coordinateY;
-	private int  buildingType;  // (BETONARME 0,KARKAS 1, AHŞAP 2 ),  
+	private String  buildingType;  // (BETONARME 0,KARKAS 1, AHŞAP 2 ),  
 	private String  buildingAge ;
-	
+	private Long    prize;
 	
 	@Id
 	@SequenceGenerator(name = "seq_estate", allocationSize = 1, sequenceName = "seq_estate")
@@ -62,18 +62,18 @@ public class Estate extends BaseEntity{
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	@Column(name = "estatetype")
-	public int getEstateType() {
+	@Column(length = 50,name = "estatetype")
+	public String getEstateType() {
 		return estateType;
 	}
-	public void setEstateType(int estateType) {
+	public void setEstateType(String estateType) {
 		this.estateType = estateType;
 	}
-	@Column(name = "estatestate")
-	public int getEstateState() {
+	@Column(length = 50,name = "estatestate")
+	public String getEstateState() {
 		return estateState;
 	}
-	public void setEstateState(int estateState) {
+	public void setEstateState(String estateState) {
 		this.estateState = estateState;
 	}
 	@Column(name = "size")
@@ -97,18 +97,18 @@ public class Estate extends BaseEntity{
 	public void setFloor(String floor) {
 		this.floor = floor;
 	}
-	@Column(name = "warmingtype")
-	public int getWarmingType() {
+	@Column(length = 50,name = "warmingtype")
+	public String getWarmingType() {
 		return warmingType;
 	}
-	public void setWarmingType(int warmingType) {
+	public void setWarmingType(String warmingType) {
 		this.warmingType = warmingType;
 	}
-	@Column(name = "deedtype")
-	public int getDeedType() {
+	@Column(length = 50,name = "deedtype")
+	public String getDeedType() {
 		return deedType;
 	}
-	public void setDeedType(int deedType) {
+	public void setDeedType(String deedType) {
 		this.deedType = deedType;
 	}
 	@Column(name = "elevator")
@@ -140,11 +140,11 @@ public class Estate extends BaseEntity{
 	public void setCoordinateY(String coordinateY) {
 		this.coordinateY = coordinateY;
 	}
-	@Column(name = "buildingtype")
-	public int getBuildingType() {
+	@Column(length = 50,name = "buildingtype")
+	public String getBuildingType() {
 		return buildingType;
 	}
-	public void setBuildingType(int buildingType) {
+	public void setBuildingType(String buildingType) {
 		this.buildingType = buildingType;
 	}
 	@Column(length = 50, name = "buildingage")
@@ -155,9 +155,12 @@ public class Estate extends BaseEntity{
 		this.buildingAge = buildingAge;
 	}
 	
+	@Column( name = "prize")
+	public Long getPrize() {
+		return prize;
+	}
+	public void setPrize(Long prize) {
+		this.prize = prize;
+	}
 	
-	
-	
-	
-
 }
