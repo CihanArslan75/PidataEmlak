@@ -34,9 +34,7 @@ import com.cihan.estate.utils.HashCodeCihan;
 public class HomeController {
 	
 	private String loginUser;
-	List<Customer> listC;
-	List<RealEstateAgent> listRea;
-	
+		
 	@Autowired
 	UserDAO userDao;
 	
@@ -59,7 +57,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/index")
-	public String getOwnerName() {
+	public String getOwnerName(Model model) {
+		model.addAttribute("loginUser",loginUser);
 		return "index";
 	}
 	
@@ -81,20 +80,19 @@ public class HomeController {
 			user.setInsertDate(new Date());
 			user.setState(StateEnum.YENIGIRIS);
 			userDao.save(user);
+			loginUser=user.getUsername();
 			return "redirect:/index";
 		}
 		 else
 		 {  if(!hashCodeCihan.decodeWord(user.getPassword()).equals(password))
 			 {
 				 System.out.println("Şifre Yanlış !!");
-				 return "redirect:/index";
+				 model.addAttribute("displayArea","Şifre Hatalı ");
+				 return "login";
 			 }
 			 else {
 				 loginUser=user.getUsername();
-				 model.addAttribute("loginUser",loginUser);
 				 session.setAttribute("user", user);
-				 List<Customer> listC=customerDAO.search(new Customer());
-				 List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
 				 return "redirect:/index";
 			 }
 		
@@ -110,6 +108,8 @@ public class HomeController {
 		case 2: page =  "customer";break;
 		case 3: 
 			page =  "estate";
+			List<Customer> listC=customerDAO.search(new Customer());
+			List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
 			model.addAttribute("listC",listC);
 			model.addAttribute("listRea",listRea);
 			break;
@@ -208,6 +208,8 @@ public class HomeController {
 		estate.setInsertDate(new Date());
 		estate.setState(StateEnum.YENIGIRIS);
 		estateDAO.save(estate);
+		List<Customer> listC=customerDAO.search(new Customer());
+		List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
 		model.addAttribute("listC",listC);
 		model.addAttribute("listRea",listRea);
 		model.addAttribute("displayArea","Kayıt İşlemi Gerçekleşti ");
@@ -223,7 +225,8 @@ public class HomeController {
 		//Customer customer = new Customer();
 
 		List<Estate> listEstate = estateDAO.searchEstate(estateType1,estateState1,price1,price2,new Estate());
-		
+		List<Customer> listC=customerDAO.search(new Customer());
+		List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());		
 		model.addAttribute("listEstate",listEstate);
 		model.addAttribute("listC",listC);
 		model.addAttribute("listRea",listRea);

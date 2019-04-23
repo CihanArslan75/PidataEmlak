@@ -50,6 +50,8 @@
 				<input  type="submit"  value="Giriş"/>
 				
 				</div>
+				</br>
+          		<h6 style="color:red;" align="center" >${displayArea}</h6>
 				</form>
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
