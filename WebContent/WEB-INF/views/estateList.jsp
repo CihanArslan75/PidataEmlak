@@ -49,10 +49,20 @@
 					  </div>
 					</div>
 					
-					  <div class="form-group">
-						  <label class="col-md-4 control-label" for="button1id"></label>
-						  <div class="col-md-4" align="center">
+					  <div class="form-group col-md-2">
+						   <div class="col-md-6" align="center">
+						  
+						  </div>
+					  </div>
+					  <div class="form-group col-md-5">
+						   <div class="col-md-6" align="center">
 						    <button id="button1id" name="button1id" class="btn btn-success">Emlak Ara</button>
+						  </div>
+					  </div>
+					  <div class="form-group  col-md-5">
+						
+						  <div class="col-md-6" align="center">
+						    <button id="button1id" name="button1id" class="btn btn-success">Emlak Kayıtlarını Excele Aktar </button>
 						  </div>
 					  </div>
 					 
@@ -66,6 +76,7 @@
 									<th style="text-align: left" class="control-label">Emlağın Adresi</th>									
 									<th style="text-align: left" class="control-label">Tapunun Türü</th>	
 									<th style="text-align: right" class="control-label">Fiyatı</th>	
+									<th style="text-align: right" class="control-label">PDF</th>	
 								</tr>
 							</thead>
 							<tbody>
@@ -76,6 +87,12 @@
 									  <td>${ls.address}</td>
 									  <td>${ls.deedType}</td>
 									  <td style="text-align: right" >${ls.price}</td>
+									  <td>
+										<div>
+											<button type="button"
+												class="btn btn-round btn-danger col-lg-12" onclick="pdf(${ls.id})">PDF</button>
+										</div>
+									</td>
 								 </tr>
 								</c:forEach>
 							</tbody>
