@@ -168,11 +168,12 @@ public class HomeController {
 	}
 
 	@RequestMapping(value="/estate", method = RequestMethod.POST  )
-	public ModelAndView saveEstate(Locale locale, Model model, HttpSession session, 
+	public void saveEstate(Locale locale, Model model, HttpSession session, 
 			@RequestParam String agentid,
 			@RequestParam String customerid,
 			@RequestParam String estatetype,
-			@RequestParam String estatestate, 
+			@RequestParam String estatestate,
+			@RequestParam String price,
 			@RequestParam String roomnumber,
 			@RequestParam String size, 
 			@RequestParam String floor,
@@ -180,12 +181,11 @@ public class HomeController {
 			@RequestParam String buildingtype,
 			@RequestParam String warmingtype,
 			@RequestParam String deedtype,
-			@RequestParam String address
+			@RequestParam String address			
 			) throws Exception {
 		
 		Estate estate = new Estate();
-		ModelAndView mav= new ModelAndView();
-	
+			
 		RealEstateAgent reaa= realEstateAgentDAO.findId(Integer.valueOf(agentid),new RealEstateAgent());
 		Customer cuss= customerDAO.findId(Integer.valueOf(customerid), new Customer());
 			
@@ -194,7 +194,8 @@ public class HomeController {
 		estate.setEstateType(estatetype);
 		estate.setEstateState(estatestate);
 		estate.setRoomNumber(roomnumber);
-		if(size!=null)  estate.setSize(Integer.valueOf(size));
+		if(size!=null && !size.equals(""))  estate.setSize(Integer.valueOf(size));
+		if(price!=null && !price.equals(""))  estate.setPrice(Long.parseLong(price));
 		estate.setFloor(floor);
 		estate.setBuildingAge(buildingage);
 		estate.setBuildingType(buildingtype);
@@ -204,20 +205,23 @@ public class HomeController {
 		estate.setInsertDate(new Date());
 		estate.setState(StateEnum.YENIGIRIS);
 		estateDAO.save(estate);
-		mav.addObject("displayArea","Kayıt İşlemi Gerçekleşti ");
-		return mav;
+		List<Customer> listC=customerDAO.search(new Customer());
+		List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
+		model.addAttribute("listC",listC);
+		model.addAttribute("listRea",listRea);
+		model.addAttribute("displayArea","Kayıt İşlemi Gerçekleşti ");
 	}
 	
 	@RequestMapping(value="/estateList", method = RequestMethod.POST  )
-	public void getEstate(Locale locale, Model model, HttpSession session ) throws Exception {
-			//@RequestParam String customertype,
-			//@RequestParam String name, 
-			//@RequestParam String surname,
-			//@RequestParam String mobilephone, 
-			//@RequestParam String email) throws Exception {
+	public void getEstate(Locale locale, Model model, HttpSession session,
+			@RequestParam String estateType1,
+			@RequestParam String estateState1, 
+			@RequestParam String price1,
+			@RequestParam String price2) throws Exception {
 		
 		//Customer customer = new Customer();
-		List<Estate> listEstate = estateDAO.search(new Estate());
+		List<Estate> listEstate = estateDAO.searchEstate(estateType1,estateState1,Long.parseLong(price1),Long.parseLong(price2),new Estate());
+		
 		model.addAttribute("listEstate",listEstate);
 		
 	} 

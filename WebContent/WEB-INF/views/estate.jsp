@@ -8,7 +8,7 @@
 <jsp:include page="/index"></jsp:include>
 <form class="form-horizontal"  action="estate" method="post">
 <fieldset>
-
+ <div class="x_panel">
 <!-- Form Name -->
 <h1 align="center">Emlak Bilgileri Giriş Formu</h1>
 
@@ -58,6 +58,22 @@
 	</div>
 </div>
 
+<div class="form-group">
+	<label class="control-label col-md-4">Emlağın Fiyatı</label>
+	<div class="col-md-4">
+	<input  type="text" class="form-control has-feedback-left" id="price" name="price"
+		onkeyup="var pos=this.selectionStart;
+		 	     var size = this.value.length;	
+							this.value=this.value.replace(/,/g,'.').replace(/[^0-9,'.']+/g, '');
+             				if(this.value.indexOf('.')!=this.value.lastIndexOf('.'))
+								this.value=this.value.substring(0,size-1);
+							"
+							onfocus="
+							this.value=''
+							" />
+	<span class="fa fa-try form-control-feedback left"  aria-hidden="true"></span>
+	</div>
+</div>
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="size">MetreKaresi :</label>  
@@ -134,6 +150,6 @@
     <button id="button1id" name="button1id" class="btn btn-success">Kaydet</button>
   </div>
 </div>
-
+</div>
 </fieldset>
 </form>

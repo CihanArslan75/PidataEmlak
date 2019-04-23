@@ -8,6 +8,8 @@
 <body class="hold-transition register-page">
 <form class="form-horizontal"  action="estateList" method="post" >
 <div class="col-md-12">
+<div class="col-md-2"></div>
+<div class="col-md-10">
 	<div class="">
 		<div class="clearfix"></div>
 		<div class="row">
@@ -30,9 +32,10 @@
 					  </div>
 					</div>
 					<div class="form-group">
-					  <label class="col-md-4 control-label" for="estateState1">Fiyatı :</label>  
+					  <label class="col-md-4 control-label" for="estateState1">Fiyat Aralığı :</label>  
 					  <div class="col-md-4">
 					  <input id="price1" name="price1" class="form-control input-md" type="text">
+					  <input id="price1" name="price2" class="form-control input-md" type="text">
 					  </div>
 					</div>
 					  <div class="form-group">

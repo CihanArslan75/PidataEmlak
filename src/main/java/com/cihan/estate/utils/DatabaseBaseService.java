@@ -136,6 +136,23 @@ import com.cihan.estate.models.StateEnum;
 	            return list;
 	       
 	    }
+	    
+	    @Override
+	    public List<T> searchEstate(String columnName1, String columnName2, Long price1,Long price2, T t) throws Exception  {
+	       
+	            openSession();
+	            Criteria cr = ss.createCriteria(t.getClass());
+	            if(!columnName1.equals("")) cr.add(Restrictions.eq("estateType",columnName1));
+	            if(!columnName2.equals("")) cr.add(Restrictions.eq("estateState",columnName2));
+	            if(price1!=null && price2==null) cr.add(Restrictions.eq("price",price1));
+	            if(price1==null && price2!=null) cr.add(Restrictions.eq("price",price2));
+	            if(price1!=null && price2!=null) cr.add(Restrictions.between("price", price1,price1));
+	            cr.addOrder(Order.desc("id"));
+	            List<T> list = cr.list();
+	            closeSession();
+	            return list;
+	       
+	    }
 
 	    @Override
 	    public List<T> searchIdAll(T t)   throws Exception{

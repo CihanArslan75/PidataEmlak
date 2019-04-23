@@ -7,8 +7,12 @@
 <jsp:include page="/index"></jsp:include>
 
 <form class="form-horizontal" action="customer" method="post">
-    <fieldset>
-
+   
+<fieldset>
+ <div class="x_panel">
+ <div class="col-md-12">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
         <!-- Form Name -->
         <h1 align="center">Müşteri Bilgileri Giriş Formu </h1>
  		</br>
@@ -69,6 +73,10 @@
                 <button id="saveBtn" name="saveBtn" class="btn btn-success">Kaydet</button>
             </div>
         </div>
-
+  </div>
+  <div class="col-md-3"></div>
+  </div>
+  </div>
     </fieldset>
+  
 </form>

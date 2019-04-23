@@ -20,20 +20,20 @@ public class Estate extends BaseEntity{
 	private int id ;
 	private RealEstateAgent realEstateAgent ;
 	private Customer customer ;
-	private String estateType;  // (KONUT 0 , ISYERI 1)  
-	private String estateState; //(SATILIK 0 , KIRALIK 1) 
-	private int size ;    //(metrekate)
-	private String roomNumber  ;
-	private String floor ;
+	private String  estateType;  // (KONUT 0 , ISYERI 1)  
+	private String  estateState; //(SATILIK 0 , KIRALIK 1) 
+	private int     size ;    //(metrekate)
+	private String  roomNumber  ;
+	private String  floor ;
 	private String  warmingType ; //(MERKEZI 0,DOGALGAZ 1, KAT KALORIFERI 2) 
-	private String deedType ; //(KAT MULKIYETI 0,KAT IRTIFAKI 1,TAPUSUZ 2)   
-	private State elevator  ; // (VAR , YOK) 
-	private String address  ;
+	private String  deedType ; //(KAT MULKIYETI 0,KAT IRTIFAKI 1,TAPUSUZ 2)   
+	private State   elevator  ; // (VAR , YOK) 
+	private String  address  ;
 	private String  coordinateX  ;
-	private String coordinateY;
+	private String  coordinateY;
 	private String  buildingType;  // (BETONARME 0,KARKAS 1, AHŞAP 2 ),  
 	private String  buildingAge ;
-	private Long    prize;
+	private Long    price;
 	
 	@Id
 	@SequenceGenerator(name = "seq_estate", allocationSize = 1, sequenceName = "seq_estate")
@@ -155,12 +155,12 @@ public class Estate extends BaseEntity{
 		this.buildingAge = buildingAge;
 	}
 	
-	@Column( name = "prize")
-	public Long getPrize() {
-		return prize;
+	@Column( name = "price")
+	public Long getPrice() {
+		return price;
 	}
-	public void setPrize(Long prize) {
-		this.prize = prize;
+	public void setPrice(Long price) {
+		this.price = price;
 	}
 	
 }
