@@ -14,7 +14,7 @@ public interface IDatabase<T> {
     public List<T> search(String columnName, String search ,T t)  throws Exception;
     public T searchUsr(String columnName, String search, T t) throws Exception;
     public List<T> searchAll(String columnName, String search ,T t)  throws Exception;
-    public List<T> searchEstate(String columnName1, String columnName2, Long price1,Long price2, T t)   throws Exception;
+    public List<T> searchEstate(String columnName1, String columnName2, String price1,String price2, T t)   throws Exception;
     public List<T> searchIdAll(T t) throws Exception;
     public List<T> search(T t)  throws Exception;
     public List<T> searchDate(String columnName, Date date1,Date date2, T t) throws Exception;   

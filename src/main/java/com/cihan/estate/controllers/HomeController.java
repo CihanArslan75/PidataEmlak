@@ -34,6 +34,8 @@ import com.cihan.estate.utils.HashCodeCihan;
 public class HomeController {
 	
 	private String loginUser;
+	List<Customer> listC;
+	List<RealEstateAgent> listRea;
 	
 	@Autowired
 	UserDAO userDao;
@@ -89,7 +91,10 @@ public class HomeController {
 			 }
 			 else {
 				 loginUser=user.getUsername();
+				 model.addAttribute("loginUser",loginUser);
 				 session.setAttribute("user", user);
+				 List<Customer> listC=customerDAO.search(new Customer());
+				 List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
 				 return "redirect:/index";
 			 }
 		
@@ -105,8 +110,6 @@ public class HomeController {
 		case 2: page =  "customer";break;
 		case 3: 
 			page =  "estate";
-			List<Customer> listC=customerDAO.search(new Customer());
-			List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
 			model.addAttribute("listC",listC);
 			model.addAttribute("listRea",listRea);
 			break;
@@ -205,8 +208,6 @@ public class HomeController {
 		estate.setInsertDate(new Date());
 		estate.setState(StateEnum.YENIGIRIS);
 		estateDAO.save(estate);
-		List<Customer> listC=customerDAO.search(new Customer());
-		List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
 		model.addAttribute("listC",listC);
 		model.addAttribute("listRea",listRea);
 		model.addAttribute("displayArea","Kayıt İşlemi Gerçekleşti ");
@@ -220,9 +221,12 @@ public class HomeController {
 			@RequestParam String price2) throws Exception {
 		
 		//Customer customer = new Customer();
-		List<Estate> listEstate = estateDAO.searchEstate(estateType1,estateState1,Long.parseLong(price1),Long.parseLong(price2),new Estate());
+
+		List<Estate> listEstate = estateDAO.searchEstate(estateType1,estateState1,price1,price2,new Estate());
 		
 		model.addAttribute("listEstate",listEstate);
+		model.addAttribute("listC",listC);
+		model.addAttribute("listRea",listRea);
 		
 	} 
 	

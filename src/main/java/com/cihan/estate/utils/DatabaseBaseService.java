@@ -138,15 +138,15 @@ import com.cihan.estate.models.StateEnum;
 	    }
 	    
 	    @Override
-	    public List<T> searchEstate(String columnName1, String columnName2, Long price1,Long price2, T t) throws Exception  {
+	    public List<T> searchEstate(String columnName1, String columnName2, String price1,String price2, T t) throws Exception  {
 	       
 	            openSession();
 	            Criteria cr = ss.createCriteria(t.getClass());
-	            if(!columnName1.equals("")) cr.add(Restrictions.eq("estateType",columnName1));
-	            if(!columnName2.equals("")) cr.add(Restrictions.eq("estateState",columnName2));
-	            if(price1!=null && price2==null) cr.add(Restrictions.eq("price",price1));
-	            if(price1==null && price2!=null) cr.add(Restrictions.eq("price",price2));
-	            if(price1!=null && price2!=null) cr.add(Restrictions.between("price", price1,price1));
+	            if(columnName1!=null && !columnName1.equals("")) cr.add(Restrictions.eq("estateType",columnName1));
+	            if(columnName2!=null && !columnName2.equals("")) cr.add(Restrictions.eq("estateState",columnName2));
+	            //if(price1!=null && price2==null) cr.add(Restrictions.eq("price",price1));
+	            //if(price1==null && price2!=null) cr.add(Restrictions.eq("price",price2));
+	            if(price1!=null && price2!=null &&  !price1.equals("") &&  !price2.equals("") ) cr.add(Restrictions.between("price",  Long.parseLong(price1), Long.parseLong(price2)));
 	            cr.addOrder(Order.desc("id"));
 	            List<T> list = cr.list();
 	            closeSession();

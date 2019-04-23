@@ -17,10 +17,9 @@
   <label class="col-md-4 control-label" for="estateid">Yetkili İşletme Adı :</label>
   <div class="col-md-4">
    <select name="agentid" id="agentid"  class="select2_single form-control"   >
-	
-			<c:forEach items="${listRea}" var="rea">
-				<option value="${rea.id}">${rea.agentName}</option>
-			</c:forEach>
+		<c:forEach items="${listRea}" var="rea">
+			<option value="${rea.id}">${rea.agentName}</option>
+		</c:forEach>
   </select>
     			
   </div>
@@ -31,10 +30,9 @@
   <label class="col-md-4 control-label" for="customerid">Müşteri Adı Soyadı :</label>
   <div class="col-md-4">
    <select name="customerid"  class="select2_single form-control"  >
-		
-			<c:forEach items="${listC}" var="cus">
-				<option value="${cus.id}">${cus.name}</option>
-			</c:forEach>
+		<c:forEach items="${listC}" var="cus">
+			<option value="${cus.id}">${cus.name}</option>
+		</c:forEach>
   </select>
   </div>
 </div>
