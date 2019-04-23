@@ -5,6 +5,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <jsp:include page="/index"></jsp:include>
+<body class="hold-transition register-page">
 <form class="form-horizontal"  action="estateList" method="post" >
 <div class="col-md-12">
 	<div class="">
@@ -73,3 +74,4 @@
 	</div>
 </div>
 </form>
+</body>

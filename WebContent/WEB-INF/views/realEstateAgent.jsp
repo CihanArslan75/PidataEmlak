@@ -5,6 +5,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <jsp:include page="/index"></jsp:include>
+
 <form class="form-horizontal" action="realEstateAgent" method="post">
     <fieldset>
         <!-- Form Name -->
@@ -65,4 +66,5 @@
         </div>
 
     </fieldset>
-</form>
+
+</body>

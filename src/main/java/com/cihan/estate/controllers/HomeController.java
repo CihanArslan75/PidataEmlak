@@ -82,8 +82,7 @@ public class HomeController {
 			return "redirect:/index";
 		}
 		 else
-		 {
-			 if(!user.getPassword().equals(hashCodeCihan.decodeWord(password)))
+		 {  if(!hashCodeCihan.decodeWord(user.getPassword()).equals(password))
 			 {
 				 System.out.println("Şifre Yanlış !!");
 				 return "redirect:/index";
