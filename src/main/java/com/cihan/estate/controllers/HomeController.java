@@ -24,6 +24,7 @@ import com.cihan.estate.dao.EstateDAO;
 import com.cihan.estate.dao.RealEstateAgentDAO;
 import com.cihan.estate.dao.UserDAO;
 import com.cihan.estate.excelpdf.EstateListExcel;
+import com.cihan.estate.excelpdf.EstatePdf;
 import com.cihan.estate.models.Customer;
 import com.cihan.estate.models.Estate;
 import com.cihan.estate.models.RealEstateAgent;
@@ -243,9 +244,12 @@ public class HomeController {
 			e.estateExcel();
 		}
 		
+		System.out.println("buttonPDF:"+buttonPDF);
+		
 		if(buttonPDF.equals("PDF")) {
-			//PDFView e = new PDFView(listEstate);
-			//e.buildPdfDocument(new Model(), new Document(),new PdfWriter(),);
+			System.out.println("aaaaaaaaa:"+listEstate.get(0));
+			new EstatePdf(listEstate.get(0));
+		
 		}
 		
 	} 

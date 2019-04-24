@@ -18,7 +18,7 @@ import com.cihan.estate.models.Estate;
 
 
 public class EstateListExcel {
-	private static final String FILE_NAME = "C:\\Users\\Cihan\\Desktop\\Cihan\\pidata\\EmlakListesi.xlsx";
+	private static final String FILE_NAME = "C:/Doc/EmlakListesi.xlsx";
 	private static String[] columns = {"NO","Yetkili İşletme Adı","Müşteri Adı Soyadı","Emlak Tipi","Emlağın Durumu","Fiyatı","MetreKaresi","Oda Sayısı","Katı","Emlağın Yaşı ","Yapı Tipi","Isınma Tipi ","Tapunun Türü","Adres"};
     private List<Estate> listEstate;
 	

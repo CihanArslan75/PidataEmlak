@@ -94,8 +94,8 @@
 									  <td style="text-align: right" >${ls.price}</td>
 									  <td style="text-align: right">
 										<div>
-											<button type="button"
-												class="btn btn-round btn-danger col-lg-6" onclick="pdf(${ls.id})">PDF</button>
+											<button  name="buttonPDF"
+												class="btn btn-round btn-success col-lg-6 " onclick="pdf(${ls.id})" value="PDF" >PDF</button>
 										</div>
 									</td>
 								 </tr>
