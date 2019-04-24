@@ -1,5 +1,6 @@
 package com.cihan.estate.excelpdf;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -56,15 +57,27 @@ public class EstatePdf {
 	       // Font fontB = FontFactory.getFont(FontFactory.COURIER, 30, BaseColor.BLACK);
 	        BaseFont bf = BaseFont.createFont(BaseFont.TIMES_ROMAN, "Cp1254", BaseFont.EMBEDDED);
 		    Font fontB = new Font(bf, 30, Font.BOLD, BaseColor.RED);
-		   
+		    System.out.println("img1:");
 		    String imgPath = "C:/Doc/emlak1.jpg";
-		    Image img = Image.getInstance(imgPath);
+		    Image img = null;
+		    System.out.println("img2:");
+		    
 		    
 	        Chunk chunk = new Chunk("EMLAK BİLGİSİ ", fontB);
 	        document.add(chunk);
 	        document.add(Chunk.NEWLINE );
-	      	        
-	        document.add(img);
+	        System.out.println("img3");
+            try {
+            	 img = Image.getInstance(imgPath);
+            	 document.add(img);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+           
+	        
+            System.out.println("img4:");
+	       
+			
 	              
 	        BaseFont bf1 = BaseFont.createFont(BaseFont.TIMES_ROMAN, "Cp1254", BaseFont.EMBEDDED);
 		    Font font = new Font(bf, 15, Font.BOLD, BaseColor.BLUE);
@@ -74,25 +87,24 @@ public class EstatePdf {
 	        document.add( new Paragraph( "Müşteri Adı Soyadı : " +estate.getCustomer().getName()+" "+estate.getCustomer().getSurname() ,font) );
 	        document.add(Chunk.NEWLINE );
 	        document.add( new Paragraph( "Emlak Tipi : " +estate.getEstateType() ,font) );
-	        document.add(Chunk.NEWLINE );
+	        
 	        document.add( new Paragraph( "Emlağın Durumu : " +estate.getEstateState() ,font) );
-	        document.add(Chunk.NEWLINE );
+	        
 	        document.add( new Paragraph( "Fiyatı : " +estate.getPrice()  ,font));
-	        document.add(Chunk.NEWLINE );
+	       
 	        document.add( new Paragraph( "MetreKaresi : " +estate.getSize() ,font) );
-	        document.add(Chunk.NEWLINE );
+	       
 	        document.add( new Paragraph( "Oda Sayısı : " +estate.getRoomNumber() ,font) );
-	        document.add(Chunk.NEWLINE );
+	       
 	        document.add( new Paragraph( "Katı : " +estate.getFloor() ,font) );
-	        document.add(Chunk.NEWLINE );
+	        
 	        document.add( new Paragraph( "Emlağın Yaşı : " +estate.getBuildingAge() ,font) );
-	        document.add(Chunk.NEWLINE );
+	        
 	        document.add( new Paragraph( "Yapı Tipi : " +estate.getBuildingType() ,font) );
-	        document.add(Chunk.NEWLINE );
+	        
 	        document.add( new Paragraph( "Isınma Tipi : " +estate.getWarmingType() ,font) );
-	        document.add(Chunk.NEWLINE );
+	        
 	        document.add( new Paragraph( "Tapunun Türü : " +estate.getDeedType() ,font) );
-	        document.add(Chunk.NEWLINE );
 	        document.add( new Paragraph( "Adres: " +estate.getAddress() ,font) );
 
 	        

@@ -61,13 +61,10 @@ public class HomeController {
 	@RequestMapping("/index")
 	public String getOwnerName(Model model) {
 		model.addAttribute("loginUser",loginUser);
-		return "/estateList";
+		return "index";
 	}
 	
-	@RequestMapping("/estateList")
-	public String getOwnerName1(Model model) {
-		return "/estateList";
-	}
+
 
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -78,7 +75,7 @@ public class HomeController {
 			
 		if(user == null){
 			model.addAttribute("error", "kullanıcı adı veya şifre hatalı!");
-		
+			System.out.println("user yok");
 			user = new User();
 			user.setUsername(username);
 			user.setPassword(hashCodeCihan.encodeWord(password));
@@ -86,7 +83,7 @@ public class HomeController {
 			user.setState(StateEnum.YENIGIRIS);
 			userDao.save(user);
 			loginUser=user.getUsername();
-			return "redirect:/estateList";
+			return "redirect:/index";
 		}
 		 else
 		 {  if(!hashCodeCihan.decodeWord(user.getPassword()).equals(password))
@@ -98,7 +95,7 @@ public class HomeController {
 			 else {
 				 loginUser=user.getUsername();
 				 session.setAttribute("user", user);
-				 return "redirect:/estateList";
+				 return "redirect:/index";
 			 }
 		
 		 }	
@@ -107,8 +104,8 @@ public class HomeController {
 
 	@RequestMapping(value="/estateprocess" , method = RequestMethod.POST )   
 	public String urlVer(Locale locale, Model model, HttpSession session, @RequestParam int txtId) throws Exception {
-		String page="estateList";
-	    switch (txtId) {
+		String page;
+		switch (txtId) {
 		case 1: page =  "realEstateAgent";break;
 		case 2: page =  "customer";break;
 		case 3: 
@@ -247,12 +244,12 @@ public class HomeController {
 			e.estateExcel();
 		}
 		
-		System.out.println("buttonPDF:"+buttonPDF);
+		if(buttonPDF!=null && !buttonPDF.equals("")) {
+
+		if(buttonPDF.substring(0,3).equals("PDF") ) {
+			new EstatePdf(listEstate.get(Integer.parseInt(buttonPDF.substring(4,buttonPDF.indexOf(")")))-1));
 		
-		if(buttonPDF.equals("PDF")) {
-			System.out.println("aaaaaaaaa:"+listEstate.get(0));
-			new EstatePdf(listEstate.get(0));
-		
+		}
 		}
 		
 	} 
