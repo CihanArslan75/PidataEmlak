@@ -18,7 +18,6 @@
 	
 
     <title>	EMLAK SİTESİ  </title>
-
   
     <link type="text/css" rel="stylesheet" 	href="resources/vendors/bootstrap/dist/css/bootstrap.min.css?ln=css" />
     <link type="text/css" rel="stylesheet" 	href="resources/vendors/font-awesome/css/font-awesome.min.css?ln=css" /> 
@@ -71,13 +70,6 @@
                   <li><a href="#" onclick="url(2)"><i class="fa fa-table"></i> Müşteri Yeni Kayıt </a></li>
                   <li><a href="#" onclick="url(3)"><i class="fa fa-bar-chart-o"></i> Emlak Girişi </a></li>
                   <li><a href="#" onclick="url(4)"><i class="fa fa-clone"></i> Emlak Listeleme  </a></li>
-                  <li><a><i class="fa fa-desktop"></i> Özel İşlemler <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#" onclick="url(4)">Excel e Aktar</a></li>
-                      <li><a href="#" onclick="url(5)">Ürünleri XML e Aktar</a></li>
-                      <li><a href="#" onclick="url(6)">PDF Olarak Rapor  Çıkart</a></li>
-                     </ul>
-                  </li>
                 </ul>
               </div>
               

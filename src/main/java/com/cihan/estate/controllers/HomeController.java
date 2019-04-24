@@ -61,10 +61,13 @@ public class HomeController {
 	@RequestMapping("/index")
 	public String getOwnerName(Model model) {
 		model.addAttribute("loginUser",loginUser);
-		return "index";
+		return "/estateList";
 	}
 	
-
+	@RequestMapping("/estateList")
+	public String getOwnerName1(Model model) {
+		return "/estateList";
+	}
 
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -75,7 +78,7 @@ public class HomeController {
 			
 		if(user == null){
 			model.addAttribute("error", "kullanıcı adı veya şifre hatalı!");
-			System.out.println("user yok");
+		
 			user = new User();
 			user.setUsername(username);
 			user.setPassword(hashCodeCihan.encodeWord(password));
@@ -83,7 +86,7 @@ public class HomeController {
 			user.setState(StateEnum.YENIGIRIS);
 			userDao.save(user);
 			loginUser=user.getUsername();
-			return "redirect:/index";
+			return "redirect:/estateList";
 		}
 		 else
 		 {  if(!hashCodeCihan.decodeWord(user.getPassword()).equals(password))
@@ -95,7 +98,7 @@ public class HomeController {
 			 else {
 				 loginUser=user.getUsername();
 				 session.setAttribute("user", user);
-				 return "redirect:/index";
+				 return "redirect:/estateList";
 			 }
 		
 		 }	
@@ -104,8 +107,8 @@ public class HomeController {
 
 	@RequestMapping(value="/estateprocess" , method = RequestMethod.POST )   
 	public String urlVer(Locale locale, Model model, HttpSession session, @RequestParam int txtId) throws Exception {
-		String page;
-		switch (txtId) {
+		String page="estateList";
+	    switch (txtId) {
 		case 1: page =  "realEstateAgent";break;
 		case 2: page =  "customer";break;
 		case 3: 
