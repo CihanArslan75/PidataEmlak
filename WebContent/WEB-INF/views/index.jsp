@@ -53,7 +53,7 @@
                 <img src="resources/images/img.jpg" alt="..." class="img-circle profile_img" />
               </div>
               <div class="profile_info">
-                <span>Hoşgeldin, ${loginUser} </span>
+                <span>Hoşgeldin, ${user} </span>
                 <h2><outputLabel value="1"/> </h2>
               </div>
             </div>

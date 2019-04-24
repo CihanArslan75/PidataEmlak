@@ -21,7 +21,7 @@
 		<!-- Select Basic -->
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="estateid">Alıcı/Satıcı :</label>
-		  <div class="col-md-4">
+		  <div class="col-md-5">
 		    <select id="customertype" name="customertype" class="form-control">
 		      <option value="0">Alıcı</option>
   			  <option value="1">Satıcı</option>
@@ -32,7 +32,7 @@
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="reaname">Müşteri Adı : </label>
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <input id="name" name="name" type="text" placeholder="Müşterinin Adını Giriniz" class="form-control input-md"  required="">
                 <p style="color:red;font-size=10px">Zorunlu Alan</p>
             </div>
@@ -41,7 +41,7 @@
          <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="reaname">Müşteri Soyadı : </label>
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <input id="surname" name="surname" type="text" placeholder="Müşterinin Soyadı Giriniz" class="form-control input-md"  required="">
                 <p style="color:red;">Zorunlu Alan</p>
             </div>
@@ -51,7 +51,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="mobilephone">Cep Telefonu : </label>
 
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <input id="mobilephone" name="mobilephone" type="text" placeholder="" class="form-control input-md"    >
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="email">Email : </label>
 
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <input id="email" name="email" type="text" placeholder="" class="form-control input-md"  >
             </div>
         </div>

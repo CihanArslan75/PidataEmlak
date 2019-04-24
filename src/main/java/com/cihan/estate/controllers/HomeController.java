@@ -35,7 +35,7 @@ import com.cihan.estate.utils.HashCodeCihan;
 @Controller
 public class HomeController {
 	
-	private String loginUser;
+	private String user;
 			
 	@Autowired
 	UserDAO userDao;
@@ -52,37 +52,43 @@ public class HomeController {
 	@Autowired
 	HashCodeCihan hashCodeCihan;
 	
-	@RequestMapping("/msg")
-	@ResponseBody
-	public String getMessage() {
-		return "ilk Spring Projem";
+	@RequestMapping(value="/index")
+	public String getOwnerName(Locale locale, Model model, HttpSession session) {
+		user= (String) session.getAttribute("user");
+		if(user==null) {
+		   	return "redirect:/error";
+		}
+		else
+		{	
+			model.addAttribute("user",user);
+			return "index";
+		}
 	}
 	
-	@RequestMapping("/index")
-	public String getOwnerName(Model model) {
-		model.addAttribute("loginUser",loginUser);
-		return "index";
+	@RequestMapping(value="/error")
+	@ResponseBody  
+	public String getError(Locale locale, Model model, HttpSession session) {
+		return  "  404   HATA ! ";
 	}
-	
-
-
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@GetMapping("/password-reset-request")
 	public String loginPost(Locale locale, Model model, HttpSession session, @RequestParam String username, @RequestParam String password) throws Exception {
-		System.out.println("1");
 		User user = userDao.searchUsr("username",username,new User());
-			
+		
+		if(user != null){
+			model.addAttribute("user",user);
+		}
+		
 		if(user == null){
 			model.addAttribute("error", "kullanıcı adı veya şifre hatalı!");
-			System.out.println("user yok");
 			user = new User();
 			user.setUsername(username);
 			user.setPassword(hashCodeCihan.encodeWord(password));
 			user.setInsertDate(new Date());
 			user.setState(StateEnum.YENIGIRIS);
 			userDao.save(user);
-			loginUser=user.getUsername();
+			session.setAttribute("user", user.getUsername());
 			return "redirect:/index";
 		}
 		 else
@@ -93,8 +99,7 @@ public class HomeController {
 				 return "login";
 			 }
 			 else {
-				 loginUser=user.getUsername();
-				 session.setAttribute("user", user);
+				 session.setAttribute("user", user.getUsername());
 				 return "redirect:/index";
 			 }
 		

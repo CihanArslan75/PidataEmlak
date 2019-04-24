@@ -38,12 +38,7 @@
 							</div>
 							<input type="password" name="password" class="form-control input_pass" value="" placeholder="Şifre">
 						</div>
-						<div class="form-group">
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="customControlInline">
-								<label class="custom-control-label" for="customControlInline">Şifreyi Hatırla</label>
-							</div>
-						</div>
+						
 					
 				</div>
 				<div class="d-flex justify-content-center mt-3 login_container">
@@ -53,11 +48,7 @@
 				</br>
           		<h6 style="color:red;" align="center" >${displayArea}</h6>
 				</form>
-				<div class="mt-4">
-					<div class="d-flex justify-content-center links">
-						<a href="#">Üye Ol</a>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

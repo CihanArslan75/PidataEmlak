@@ -20,7 +20,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="reaname">İşletme Adı : </label>
 
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <input id="reaname" name="reaname" type="text" placeholder="İşletme Adı Giriniz" class="form-control input-md" required="">
                 <p style="color:red;">Zorunlu Alan</p>
             </div>
@@ -30,7 +30,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="ownernamesurname">İşletme Yetkilisi : </label>
 
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <input id="ownernamesurname" name="ownernamesurname" type="text" placeholder="" class="form-control input-md"  required="">
                  <p style="color:red;">Zorunlu Alan</p>
             </div>
@@ -39,7 +39,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="mobilePhone">Cep Telefonu : </label>
 
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <input id="mobilephone" name="mobilephone" type="text" placeholder="" class="form-control input-md"    >
             </div>
         </div>
@@ -47,7 +47,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="fax">Fax : </label>
 
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <input id="fax" name="fax" type="text" placeholder="" class="form-control input-md"  >
             </div>
         </div>
@@ -56,7 +56,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="address">Adres : </label>
 
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <textarea class="form-control" id="address" name="address"></textarea>
             </div>
         </div>

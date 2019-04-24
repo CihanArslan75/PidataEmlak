@@ -1,5 +1,0 @@
-logging:
-  level:
-    org.springframework.web: debug
-  file: springlog.log 
-  path: c:\temp
