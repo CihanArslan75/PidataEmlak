@@ -5,8 +5,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <jsp:include page="/index"></jsp:include>
-<body class="hold-transition register-page">
-<form class="form-horizontal"  action="estateList" method="post" >
+<form class="form-horizontal"  action="estateList" method="post" id="estateList">
 <div class="col-md-12">
 <div class="col-md-2"></div>
 <div class="col-md-10">
@@ -22,30 +21,36 @@
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="estateType1">Emlağın Tipi :</label>  
 					  <div class="col-md-4">
-					  <select class="select2_single form-control" id="estateType1" value="estateType1" name="estateType1">
-						<option value="KONUT">KONUT</option>
-				  		<option value="İŞYERİ">İŞYERİ</option>
+					  <select class="select2_single form-control" id="estateType1"  name="estateType1">
+					    <option value=""></option>
+						<option value="KONUT"  <c:if test='${estateType1 == "KONUT"}'> selected </c:if> >KONUT</option>
+				  		<option value="İŞYERİ" <c:if test='${estateType1 == "İŞYERİ"}'> selected </c:if>  >İŞYERİ</option>
 					</select>
 					  </div>
 					</div>
+					
 					<div class="form-group">
 					  <label class="col-md-4 control-label" for="estateState1">Emlağın Türü :</label>  
 					  <div class="col-md-4">
-					  <select class="select2_single form-control" id="estateState1" value="estateState1" name="estateState1">
-						<option value="SATILIK">SATILIK</option>
-				  		<option value="KİRALIK">KİRALIK</option>
+					  <select class="select2_single form-control" id="estateState1"  name="estateState1">
+					     <option value=""></option>
+						<option value="SATILIK" <c:if test='${estateState1 == "SATILIK"}'> selected </c:if> >SATILIK</option>
+				  		<option value="KİRALIK" <c:if test='${estateState1 == "KİRALIK"}'> selected </c:if> >KİRALIK</option>
+				  		
 					</select>
-					  </div>
+					 </div>
+					
+					 
 					</div>
 					<div class="form-group  col-md-6">
 					  <label class="col-md-6 control-label" for="price1">Fiyat Aralığı :</label>  
 					  <div class="col-md-6">
-					 	<input id="price1" name="price1" class="form-control input-md" type="text">
+					 	<input id="price1" name="price1" value="${price1}" class="form-control input-md" type="text" >
 					  </div>
 					</div>
 					<div class="form-group  col-md-6">
 					    <div class="col-md-6">
-					  	<input id="price2" name="price2" class="form-control input-md" type="text">
+					  	<input id="price2" name="price2" value="${price2}" class="form-control input-md" type="text">
 					  </div>
 					</div>
 					
@@ -56,13 +61,13 @@
 					  </div>
 					  <div class="form-group col-md-5">
 						   <div class="col-md-6" align="center">
-						    <button id="button1id" name="button1id" class="btn btn-success">Emlak Ara</button>
+						    <button id="buttonSearch" name="buttonSearch"  class="btn btn-success">Emlak Ara</button>
 						  </div>
 					  </div>
 					  <div class="form-group  col-md-5">
 						
 						  <div class="col-md-6" align="center">
-						    <button id="button1id" name="button1id" class="btn btn-success">Emlak Kayıtlarını Excele Aktar </button>
+						    <button id="buttonExcel" name="buttonExcel"  value="excel" class="btn btn-success">Emlak Kayıtlarını Excele Aktar </button>
 						  </div>
 					  </div>
 					 
@@ -76,7 +81,7 @@
 									<th style="text-align: left" class="control-label">Emlağın Adresi</th>									
 									<th style="text-align: left" class="control-label">Tapunun Türü</th>	
 									<th style="text-align: right" class="control-label">Fiyatı</th>	
-									<th style="text-align: right" class="control-label">PDF</th>	
+									<th style="text-align: left" class="control-label">PDF</th>	
 								</tr>
 							</thead>
 							<tbody>
@@ -87,10 +92,10 @@
 									  <td>${ls.address}</td>
 									  <td>${ls.deedType}</td>
 									  <td style="text-align: right" >${ls.price}</td>
-									  <td>
+									  <td style="text-align: right">
 										<div>
 											<button type="button"
-												class="btn btn-round btn-danger col-lg-12" onclick="pdf(${ls.id})">PDF</button>
+												class="btn btn-round btn-danger col-lg-6" onclick="pdf(${ls.id})">PDF</button>
 										</div>
 									</td>
 								 </tr>
@@ -105,4 +110,3 @@
 	</div>
 </div>
 </form>
-</body>

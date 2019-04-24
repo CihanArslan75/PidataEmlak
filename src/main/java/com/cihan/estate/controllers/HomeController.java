@@ -23,6 +23,7 @@ import com.cihan.estate.dao.CustomerDAO;
 import com.cihan.estate.dao.EstateDAO;
 import com.cihan.estate.dao.RealEstateAgentDAO;
 import com.cihan.estate.dao.UserDAO;
+import com.cihan.estate.excelpdf.EstateListExcel;
 import com.cihan.estate.models.Customer;
 import com.cihan.estate.models.Estate;
 import com.cihan.estate.models.RealEstateAgent;
@@ -34,7 +35,7 @@ import com.cihan.estate.utils.HashCodeCihan;
 public class HomeController {
 	
 	private String loginUser;
-		
+			
 	@Autowired
 	UserDAO userDao;
 	
@@ -220,7 +221,9 @@ public class HomeController {
 			@RequestParam String estateType1,
 			@RequestParam String estateState1, 
 			@RequestParam String price1,
-			@RequestParam String price2) throws Exception {
+			@RequestParam String price2,
+			@RequestParam(defaultValue="") String buttonExcel,
+			@RequestParam(defaultValue="") String buttonPDF) throws Exception {
 		
 		//Customer customer = new Customer();
 
@@ -230,6 +233,20 @@ public class HomeController {
 		model.addAttribute("listEstate",listEstate);
 		model.addAttribute("listC",listC);
 		model.addAttribute("listRea",listRea);
+		model.addAttribute("price1",price1);
+		model.addAttribute("price2",price2);
+		model.addAttribute("estateType1",estateType1);
+		model.addAttribute("estateState1",estateState1);
+		System.out.println("buttonExcel:"+buttonExcel);
+		if(buttonExcel.equals("excel")) {
+			EstateListExcel e = new EstateListExcel(listEstate);
+			e.estateExcel();
+		}
+		
+		if(buttonPDF.equals("PDF")) {
+			//PDFView e = new PDFView(listEstate);
+			//e.buildPdfDocument(new Model(), new Document(),new PdfWriter(),);
+		}
 		
 	} 
 	

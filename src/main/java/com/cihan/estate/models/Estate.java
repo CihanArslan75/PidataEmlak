@@ -22,7 +22,7 @@ public class Estate extends BaseEntity{
 	private Customer customer ;
 	private String  estateType;  // (KONUT 0 , ISYERI 1)  
 	private String  estateState; //(SATILIK 0 , KIRALIK 1) 
-	private int     size ;    //(metrekate)
+	private Integer size ;    //(metrekate)
 	private String  roomNumber  ;
 	private String  floor ;
 	private String  warmingType ; //(MERKEZI 0,DOGALGAZ 1, KAT KALORIFERI 2) 
@@ -77,10 +77,10 @@ public class Estate extends BaseEntity{
 		this.estateState = estateState;
 	}
 	@Column(name = "size")
-	public int getSize() {
+	public Integer getSize() {
 		return size;
 	}
-	public void setSize(int size) {
+	public void setSize(Integer size) {
 		this.size = size;
 	}
 	@Column(length = 50, name = "roomNumber")
