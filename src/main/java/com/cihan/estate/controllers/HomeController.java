@@ -3,9 +3,12 @@ package com.cihan.estate.controllers;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
+import org.apache.log4j.Logger;
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.hibernate.criterion.Distinct;
 import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
@@ -32,10 +35,12 @@ import com.cihan.estate.models.StateEnum;
 import com.cihan.estate.models.user.User;
 import com.cihan.estate.utils.HashCodeCihan;
 
+
 @Controller
 public class HomeController {
 	
 	private String user;
+	private static final Logger log = Logger.getLogger(HomeController.class);
 			
 	@Autowired
 	UserDAO userDao;
@@ -52,11 +57,13 @@ public class HomeController {
 	@Autowired
 	HashCodeCihan hashCodeCihan;
 	
+
+	
 	@RequestMapping(value="/index")
 	public String getOwnerName(Locale locale, Model model, HttpSession session) {
 		user= (String) session.getAttribute("user");
 		if(user==null) {
-		   	return "redirect:/error";
+			return "redirect:/error";
 		}
 		else
 		{	
@@ -64,6 +71,7 @@ public class HomeController {
 			return "index";
 		}
 	}
+	
 	
 	@RequestMapping(value="/error")
 	@ResponseBody  
@@ -75,13 +83,12 @@ public class HomeController {
 	@GetMapping("/password-reset-request")
 	public String loginPost(Locale locale, Model model, HttpSession session, @RequestParam String username, @RequestParam String password) throws Exception {
 		User user = userDao.searchUsr("username",username,new User());
-		
+		System.out.println("user:"+user);
 		if(user != null){
 			model.addAttribute("user",user);
 		}
 		
 		if(user == null){
-			model.addAttribute("error", "kullanıcı adı veya şifre hatalı!");
 			user = new User();
 			user.setUsername(username);
 			user.setPassword(hashCodeCihan.encodeWord(password));
@@ -107,6 +114,7 @@ public class HomeController {
 		}
 
 
+	
 	@RequestMapping(value="/estateprocess" , method = RequestMethod.POST )   
 	public String urlVer(Locale locale, Model model, HttpSession session, @RequestParam int txtId) throws Exception {
 		String page;
@@ -115,15 +123,12 @@ public class HomeController {
 		case 2: page =  "customer";break;
 		case 3: 
 			page =  "estate";
-			List<Customer> listC=customerDAO.search(new Customer());
+			List<Customer> listC=customerDAO.searchCust(new Customer());
 			List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
 			model.addAttribute("listC",listC);
 			model.addAttribute("listRea",listRea);
 			break;
 		case 4: page =  "estateList";break;
-		case 5: page =  "estateExcel";break;
-		case 6: page =  "estateXML";break;
-		case 7: page =  "estatePDF";break;
 		default: page = "index";break;
 		}
 		return page;   
@@ -215,7 +220,7 @@ public class HomeController {
 		estate.setInsertDate(new Date());
 		estate.setState(StateEnum.YENIGIRIS);
 		estateDAO.save(estate);
-		List<Customer> listC=customerDAO.search(new Customer());
+		List<Customer> listC=customerDAO.searchCust(new Customer());
 		List<RealEstateAgent> listRea=realEstateAgentDAO.search(new RealEstateAgent());
 		model.addAttribute("listC",listC);
 		model.addAttribute("listRea",listRea);
@@ -243,16 +248,18 @@ public class HomeController {
 		model.addAttribute("price2",price2);
 		model.addAttribute("estateType1",estateType1);
 		model.addAttribute("estateState1",estateState1);
-		System.out.println("buttonExcel:"+buttonExcel);
+		
 		if(buttonExcel.equals("excel")) {
 			EstateListExcel e = new EstateListExcel(listEstate);
 			e.estateExcel();
 		}
 		
 		if(buttonPDF!=null && !buttonPDF.equals("")) {
-
+			System.out.println("buttonPDF:"+buttonPDF +"  aa:"+ (Integer.parseInt(buttonPDF.substring(4,buttonPDF.indexOf(")")))-1));
+		List<Estate> listEstate1 = estateDAO.search(new Estate());
 		if(buttonPDF.substring(0,3).equals("PDF") ) {
-			new EstatePdf(listEstate.get(Integer.parseInt(buttonPDF.substring(4,buttonPDF.indexOf(")")))-1));
+			
+			new EstatePdf(listEstate1.get(Integer.parseInt(buttonPDF.substring(4,buttonPDF.indexOf(")")))-1));
 		
 		}
 		}

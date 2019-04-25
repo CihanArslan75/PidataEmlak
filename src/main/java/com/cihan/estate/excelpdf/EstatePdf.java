@@ -43,11 +43,10 @@ public class EstatePdf {
 			e.printStackTrace();
 		}
 	}
-	public static final String RESULT = "hello.pdf";
-	
+
 	 public void getPdf() throws DocumentException, IOException {
 		 
-		    String filename = "C:/Doc/BlankPdf.pdf";
+		    String filename = "C:/Doc/EmlakListesiPDF.pdf";
 	        
 	        Document document = new Document( PageSize.A4, 50, 50, 80, 20 );
 	        PdfWriter.getInstance(document, new FileOutputStream(filename));

@@ -147,12 +147,26 @@ import com.cihan.estate.models.StateEnum;
 	            //if(price1!=null && price2==null) cr.add(Restrictions.eq("price",price1));
 	            //if(price1==null && price2!=null) cr.add(Restrictions.eq("price",price2));
 	            if(price1!=null && price2!=null &&  !price1.equals("") &&  !price2.equals("") ) cr.add(Restrictions.between("price",  Long.parseLong(price1), Long.parseLong(price2)));
+	            cr.addOrder(Order.asc("id"));
+	            List<T> list = cr.list();
+	            closeSession();
+	            return list;
+	       
+	    }
+	    
+	    @Override
+	    public List<T> searchCust( T t) throws Exception  {
+	       
+	            openSession();
+	            Criteria cr = ss.createCriteria(t.getClass());
+	            cr.add(Restrictions.eq("customerType", 1 ));
 	            cr.addOrder(Order.desc("id"));
 	            List<T> list = cr.list();
 	            closeSession();
 	            return list;
 	       
 	    }
+
 
 	    @Override
 	    public List<T> searchIdAll(T t)   throws Exception{
@@ -196,7 +210,7 @@ import com.cihan.estate.models.StateEnum;
 	                    else cr.add(Restrictions.ilike(fl[i].getName(), "%"+fl[i].get(t)+"%")); 
 	                }
 	            }
-	            cr.addOrder(Order.desc("id"));
+	            cr.addOrder(Order.asc("id"));
 	            list = cr.list();
 	            closeSession();
 	            return list;

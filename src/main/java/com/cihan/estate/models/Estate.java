@@ -20,18 +20,18 @@ public class Estate extends BaseEntity{
 	private int id ;
 	private RealEstateAgent realEstateAgent ;
 	private Customer customer ;
-	private String  estateType;  // (KONUT 0 , ISYERI 1)  
-	private String  estateState; //(SATILIK 0 , KIRALIK 1) 
+	private String  estateType;  // (KONUT  , ISYERI )  
+	private String  estateState; //(SATILIK  , KIRALIK ) 
 	private Integer size ;    //(metrekate)
 	private String  roomNumber  ;
 	private String  floor ;
-	private String  warmingType ; //(MERKEZI 0,DOGALGAZ 1, KAT KALORIFERI 2) 
-	private String  deedType ; //(KAT MULKIYETI 0,KAT IRTIFAKI 1,TAPUSUZ 2)   
+	private String  warmingType ; //(MERKEZI ,DOGALGAZ , KAT KALORIFERI ) 
+	private String  deedType ; //(KAT MULKIYETI ,KAT IRTIFAKI ,TAPUSUZ )   
 	private State   elevator  ; // (VAR , YOK) 
 	private String  address  ;
 	private String  coordinateX  ;
 	private String  coordinateY;
-	private String  buildingType;  // (BETONARME 0,KARKAS 1, AHŞAP 2 ),  
+	private String  buildingType;  // (BETONARME ,KARKAS , AHŞAP  ),  
 	private String  buildingAge ;
 	private Long    price;
 	
